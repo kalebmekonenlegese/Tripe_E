@@ -14,10 +14,8 @@ pnpm-lock.yaml
 
 # Development
 .env
-.env.local
-.env.*.local
-.env.development
-.env.production
+.env.*
+!.env.example
 
 # IDE & Editor
 .vscode/
@@ -39,6 +37,7 @@ junit.xml
 
 # Logs
 logs/
+uploads/
 *.log
 lerna-debug.log*
 
