@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const jwtSecret = require('../utils/jwtSecret');
 
 const extractCookieToken = (req) => {
   if (req.cookies && req.cookies.auth_token) {
@@ -32,7 +33,7 @@ const authenticateToken = (req, res, next) => {
     return res.status(401).json({ error: 'No authentication token provided', requestId: req.id });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET || 'dev-secret-key', (err, user) => {
+  jwt.verify(token, jwtSecret, (err, user) => {
     if (err) {
       return res.status(403).json({ error: 'Invalid or expired token', requestId: req.id });
     }

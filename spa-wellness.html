@@ -48,10 +48,10 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -62,33 +62,23 @@
         <a href="gallery.html" class="active">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">???? English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">???? ????</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">???? ????</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -103,12 +93,12 @@
       <span>Spa & Wellness</span>
     </nav>
 
-    <section class="hero" style="min-height: 60vh;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.55)); z-index: 1;"></div>
+    <section class="hero inline-style-037">
+      <div class="inline-style-071"></div>
       <picture>
   <source type="image/avif" srcset="/images/spa-wellness-hero.svg 320w, /images/spa-wellness-hero.svg 480w, /images/spa-wellness-hero.svg 640w, /images/spa-wellness-hero.svg 900w, /images/spa-wellness-hero.svg 1200w, /images/spa-wellness-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/spa-wellness-hero.svg 320w, /images/spa-wellness-hero.svg 480w, /images/spa-wellness-hero.svg 640w, /images/spa-wellness-hero.svg 900w, /images/spa-wellness-hero.svg 1200w, /images/spa-wellness-hero.svg 1600w" sizes="100vw">
-  <img src="/assets/images/spa.webp" class="image-skeleton" alt="Spa and wellness" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+  <img src="/assets/images/spa.webp" class="image-skeleton inline-style-003" alt="Spa and wellness" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
 </picture>
       <div class="hero-copy">
         <h1 class="title">Spa & Wellness</h1>
@@ -132,7 +122,7 @@
           <div class="service-card-body">
             <h3>Harmony Massage</h3>
             <p>Choose from deep tissue, Swedish, or hot stone massage to release tension and soothe muscles.</p>
-            <div style="color: var(--accent); font-weight: 700; margin-top: 12px;">From $55</div>
+            <div class="inline-style-021">From $55</div>
             <a href="booking.html" class="button-outline">book now</a>
           </div>
         </article>
@@ -145,7 +135,7 @@
           <div class="service-card-body">
             <h3>Revive Facial</h3>
             <p>Deep cleansing, hydration, and restorative skincare for renewed luminosity.</p>
-            <div style="color: var(--accent); font-weight: 700; margin-top: 12px;">From $70</div>
+            <div class="inline-style-021">From $70</div>
             <a href="booking.html" class="button-outline">book now</a>
           </div>
         </article>
@@ -158,7 +148,7 @@
           <div class="service-card-body">
             <h3>Wellness Ritual</h3>
             <p>A complete wellness experience combining aromatherapy, body polish, and relaxation therapy.</p>
-            <div style="color: var(--accent); font-weight: 700; margin-top: 12px;">From $95</div>
+            <div class="inline-style-021">From $95</div>
             <a href="booking.html" class="button-outline">book now</a>
           </div>
         </article>
@@ -167,25 +157,25 @@
 
     <section>
       <h2 class="section-heading">Holistic Wellness Programs</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px;">
+      <div class="inline-style-072">
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Yoga & Meditation</h3>
+            <h3 class="inline-style-052">Yoga & Meditation</h3>
             <p>Daily guided yoga classes and meditation sessions to restore balance and calm.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Fitness Recovery</h3>
+            <h3 class="inline-style-052">Fitness Recovery</h3>
             <p>Therapeutic treatments that support muscle recovery and athletic wellness.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Detox & Restore</h3>
+            <h3 class="inline-style-052">Detox & Restore</h3>
             <p>Purifying wraps and body therapies designed to refresh skin and mind.</p>
           </div>
         </article>
@@ -231,27 +221,27 @@
       </div>
     </section>
 
-    <section style="background: linear-gradient(135deg, rgba(241, 188, 11, 0.06), transparent); border: 1px solid rgba(241, 188, 11, 0.1); border-radius: 16px; padding: 40px; margin: 60px 0;">
+    <section class="inline-style-051">
       <h2 class="section-heading">Why Spa & Wellness?</h2>
       <div class="benefits-grid">
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Restorative Rituals</h3>
+            <h3 class="inline-style-052">Restorative Rituals</h3>
             <p>Designed to calm the body, clear the mind, and restore your energy.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Expert Guidance</h3>
+            <h3 class="inline-style-052">Expert Guidance</h3>
             <p>Personalized recommendations from our experienced wellness team.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Premium Atmosphere</h3>
+            <h3 class="inline-style-052">Premium Atmosphere</h3>
             <p>Serene spa spaces with calming design, aromatherapy, and soft lighting.</p>
           </div>
         </article>
@@ -346,10 +336,10 @@
       </div>
     </section>
 
-    <section style="text-align: center; padding: 60px 0;">
+    <section class="inline-style-005">
       <h2 class="section-heading">Refresh Your Stay</h2>
-      <p class="section-intro" style="margin-bottom: 32px;">Book a spa treatment and make your visit to Hatsey Kaleb Hotel truly restorative.</p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <p class="section-intro inline-style-013">Book a spa treatment and make your visit to Hatsey Kaleb Hotel truly restorative.</p>
+      <div class="inline-style-014">
         <a href="booking.html" class="buttoncall">Book Now</a>
         <a href="contact.html" class="button-outline">Contact Wellness</a>
       </div>
@@ -360,15 +350,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -378,10 +368,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -394,7 +385,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -404,6 +395,13 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>

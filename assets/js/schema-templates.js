@@ -293,7 +293,7 @@ export const ORGANIZATION_SCHEMA = {
   '@type': 'Organization',
   name: 'Hatsey Kaleb Hotel',
   url: 'https://hatseykalebhotel.com',
-  logo: 'https://hatseykalebhotel.com/images/logo.svg',
+  logo: 'https://hatseykalebhotel.com/assets/images/logo-01.jpg',
   description: 'Premium hotel providing luxury accommodation and services in Tigray, Ethiopia.',
   foundingDate: '2020',
   founder: {

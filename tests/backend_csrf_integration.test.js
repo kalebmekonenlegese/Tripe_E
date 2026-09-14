@@ -45,4 +45,14 @@ describe('CSRF token endpoint in production-like environment', () => {
     expect(res.status).toBe(200);
     expect(res.body.success).toBe(true);
   });
+
+  test('allows the local preview origin to receive CSRF and API responses', async () => {
+    const res = await request(app)
+      .get('/api/csrf-token')
+      .set('Origin', 'http://127.0.0.1:5000');
+
+    expect(res.status).toBe(200);
+    expect(res.headers['access-control-allow-origin']).toBe('http://127.0.0.1:5000');
+    expect(res.body.csrfToken).toBeDefined();
+  });
 });

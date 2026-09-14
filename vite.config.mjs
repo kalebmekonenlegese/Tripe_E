@@ -140,6 +140,16 @@ const pages = {
 
   facilities: resolve(__dirname, 'facilities.html'),
 
+  'fitness-center': resolve(__dirname, 'fitness-center.html'),
+
+  'laundry-service': resolve(__dirname, 'laundry-service.html'),
+
+  'business-center': resolve(__dirname, 'business-center.html'),
+
+  'safety-security': resolve(__dirname, 'safety-security.html'),
+
+  'concierge-services': resolve(__dirname, 'concierge-services.html'),
+
   weddings: resolve(__dirname, 'weddings.html'),
 
   offers: resolve(__dirname, 'offers.html'),
@@ -166,7 +176,15 @@ const pages = {
 
   hotel: resolve(__dirname, 'hotel.html'),
 
-  'analytics-dashboard': resolve(__dirname, 'analytics-dashboard.html')
+  'analytics-dashboard': resolve(__dirname, 'analytics-dashboard.html'),
+
+  services: resolve(__dirname, 'services.html'),
+
+  account: resolve(__dirname, 'account.html'),
+
+  cancellation: resolve(__dirname, 'cancellation.html'),
+
+  404: resolve(__dirname, '404.html')
 };
 
 export default defineConfig(({ mode }) => {

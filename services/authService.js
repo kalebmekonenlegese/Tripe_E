@@ -2,7 +2,16 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const prisma = require('../utils/db');
 const { validateEmail, validatePassword } = require('../utils/validation');
-const { environment } = require('../config');
+const jwtSecret = require('../utils/jwtSecret');
+
+const MAX_FAILED_LOGIN_ATTEMPTS = 5;
+const LOCKOUT_DURATION_MS = 15 * 60 * 1000;
+
+const authError = (message, status) => {
+  const error = new Error(message);
+  error.status = status;
+  return error;
+};
 
 const registerUser = async ({ email, password, firstName, lastName }) => {
   if (!email || !password || !firstName || !lastName) {
@@ -11,14 +20,10 @@ const registerUser = async ({ email, password, firstName, lastName }) => {
     throw error;
   }
   if (!validateEmail(email)) {
-    const error = new Error('Invalid email format');
-    error.status = 400;
-    throw error;
+    throw authError('Invalid email format', 400);
   }
   if (!validatePassword(password)) {
-    const error = new Error('Password must be at least 8 characters');
-    error.status = 400;
-    throw error;
+    throw authError('Password must be at least 8 characters and include uppercase, lowercase, and a number', 400);
   }
 
   const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -35,7 +40,7 @@ const registerUser = async ({ email, password, firstName, lastName }) => {
 
   const token = jwt.sign(
     { id: user.id, email: user.email },
-    process.env.JWT_SECRET || 'dev-secret-key',
+    jwtSecret,
     { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
   );
 
@@ -52,33 +57,45 @@ const registerUser = async ({ email, password, firstName, lastName }) => {
 
 const loginUser = async ({ email, password }) => {
   if (!email || !password) {
-    const error = new Error('Email and password required');
-    error.status = 400;
-    throw error;
+    throw authError('Email and password required', 400);
   }
   if (!validatePassword(password)) {
-    const error = new Error('Password must be at least 8 characters');
-    error.status = 400;
-    throw error;
+    throw authError('Password must be at least 8 characters and include uppercase, lowercase, and a number', 400);
   }
 
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
-    const error = new Error('Invalid credentials');
-    error.status = 401;
-    throw error;
+    throw authError('Invalid credentials', 401);
+  }
+
+  if (user.lockedUntil && user.lockedUntil > new Date()) {
+    throw authError('Account temporarily locked. Try again later.', 423);
   }
 
   const passwordValid = await bcrypt.compare(password, user.password);
   if (!passwordValid) {
-    const error = new Error('Invalid credentials');
-    error.status = 401;
-    throw error;
+    const failedLoginAttempts = (user.failedLoginAttempts || 0) + 1;
+    const isLockout = failedLoginAttempts >= MAX_FAILED_LOGIN_ATTEMPTS;
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        failedLoginAttempts: isLockout ? 0 : failedLoginAttempts,
+        lockedUntil: isLockout ? new Date(Date.now() + LOCKOUT_DURATION_MS) : null
+      }
+    });
+    throw authError(isLockout ? 'Account temporarily locked. Try again later.' : 'Invalid credentials', isLockout ? 423 : 401);
+  }
+
+  if (user.failedLoginAttempts || user.lockedUntil) {
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { failedLoginAttempts: 0, lockedUntil: null }
+    });
   }
 
   const token = jwt.sign(
     { id: user.id, email: user.email },
-    process.env.JWT_SECRET || 'dev-secret-key',
+    jwtSecret,
     { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
   );
 

@@ -10,8 +10,9 @@ nav_items = [
     ('restaurant.html', 'dining'),
     ('events.html', 'events'),
     ('gallery.html', 'gallery'),
-    ('about.html', 'about us'),
-    ('contact.html', 'contact us'),
+    ('services.html', 'services'),
+  ('about.html', 'about us'),
+  ('contact.html', 'contact us'),
 ]
 
 page_active_map = {
@@ -38,22 +39,23 @@ page_active_map = {
     'privacy.html': 'about.html',
     'terms.html': 'about.html',
     'cookie-policy.html': 'about.html',
+    'services.html': 'about.html',
+    'account.html': 'booking.html',
+    'cancellation.html': 'contact.html',
     'contact.html': 'contact.html',
     'faq.html': 'contact.html',
     'offers.html': 'contact.html',
     'booking.html': 'contact.html',
     'reviews.html': 'contact.html',
     'spa-wellness.html': 'gallery.html',
+    'fitness-center.html': 'gallery.html',
+    'laundry-service.html': 'about.html',
+    'business-center.html': 'about.html',
+    'safety-security.html': 'about.html',
+    'concierge-services.html': 'about.html',
 }
 
 offer_links = [
-    ('rooms.html', 'rooms'),
-    ('restaurant.html', 'dining'),
-    ('events.html', 'events'),
-    ('gallery.html', 'gallery'),
-    ('facilities.html', 'facilities'),
-    ('offers.html', 'offers'),
-    ('faq.html', 'faq'),
 ]
 
 footer_quick = [
@@ -65,6 +67,7 @@ footer_quick = [
     ('about.html', 'About Us'),
     ('contact.html', 'Contact'),
     ('booking.html', 'Book Now'),
+    ('account.html', 'My Bookings'),
 ]
 
 footer_explore = [
@@ -87,12 +90,19 @@ footer_more = [
     ('blog.html', 'Blog'),
     ('careers.html', 'Careers'),
     ('facilities.html', 'Facilities'),
+    ('services.html', 'Hotel Services'),
+    ('cancellation.html', 'Cancellation Policy'),
+    ('fitness-center.html', 'Fitness Center'),
+    ('laundry-service.html', 'Laundry Service'),
+    ('business-center.html', 'Business Center'),
+    ('safety-security.html', 'Safety & Security'),
+    ('concierge-services.html', 'Concierge Services'),
 ]
 
-header_template = '''<header class="topbar">
+header_template = '''<header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=120&q=80" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -102,29 +112,29 @@ footer_template = '''<footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/images/logo.svg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
 '''
 
 footer_template_mid = '''        </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
 '''
 
 footer_template_end = '''        </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
 '''
 
@@ -144,7 +154,7 @@ footer_template_tail = '''        </ul>
   </footer>
 '''
 
-header_pattern = re.compile(r'<header class="topbar">.*?</header>\s*', re.DOTALL)
+header_pattern = re.compile(r'<header\b[^>]*class="topbar"[^>]*>.*?</header>\s*', re.DOTALL)
 footer_pattern = re.compile(r'<footer class="site-footer".*?</footer>\s*', re.DOTALL)
 
 for path in pages:
@@ -169,17 +179,10 @@ for path in pages:
           <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-'''
-    for href, label in offer_links:
-        header_html += f'        <a href="{href}">{label}</a>\n'
-    header_html += '''      </div>
     </div>
   </header>
 '''
@@ -206,5 +209,34 @@ for path in pages:
         print('FOOTER NOT FOUND', base)
 
     new_text = new_text.replace('href="/privacy"', 'href="privacy.html"').replace('href="/terms"', 'href="terms.html"')
+    new_text = re.sub(
+      r'<img\b(?=[^>]*src=["\']/images/lordicon\.png["\'])(?![^>]*\balt\s*=)([^>]*)>',
+      r'<img alt="" role="presentation"\1>',
+      new_text,
+      flags=re.IGNORECASE
+    )
+    def add_lazy_loading(match):
+      tag = match.group(0)
+      if re.search(r'\bloading\s*=', tag, re.IGNORECASE):
+        return tag
+      if re.search(r'\bclass=["\'][^"\']*\bhero__|src=["\'][^"\']*(?:logo|hero)[^"\']*["\']', tag, re.IGNORECASE):
+        return tag
+      return tag[:-1] + ' loading="lazy" decoding="async">'
+
+    new_text = re.sub(r'<img\b[^>]*>', add_lazy_loading, new_text, flags=re.IGNORECASE | re.DOTALL)
+    new_text = new_text.replace('/assets/images/logo.svg', '/images/logo.svg')
+    new_text = re.sub(r'\s*/\s+(?=(?:loading|decoding)=)', ' ', new_text, flags=re.IGNORECASE)
+    new_text = re.sub(
+      r'\s*<!-- AI CONCIERGE.*?</script>\s*',
+      '\n',
+      new_text,
+      flags=re.IGNORECASE | re.DOTALL
+    )
+    new_text = re.sub(
+      r'\s*<!-- AI Concierge Assistant Widget.*?</div>\s*\n\s*<script type="module" defer src="assets/js/app\.js"></script>',
+      '\n  <script type="module" defer src="assets/js/app.js"></script>',
+      new_text,
+      flags=re.IGNORECASE | re.DOTALL
+    )
     path.write_text(new_text, encoding='utf-8')
     print('UPDATED', base)

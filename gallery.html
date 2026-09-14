@@ -43,10 +43,10 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -57,33 +57,23 @@
         <a href="gallery.html" class="active">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">???? English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">???? ????</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">???? ????</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -96,12 +86,12 @@
       <span>Gallery</span>
     </nav>
 
-    <section class="hero" style="min-height: 50vh;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6), transparent); z-index: 1;"></div>
+    <section class="hero inline-style-001">
+      <div class="inline-style-002"></div>
       <picture>
   <source type="image/webp" srcset="/assets/images/gallery-01.webp 1600w" sizes="100vw">
   <source type="image/webp" srcset="/assets/images/gallery-01.webp 1600w" sizes="100vw">
-  <img src="/assets/images/gallery-01.webp" class="image-skeleton" alt="Hotel gallery" width="1600" height="900" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+  <img src="/assets/images/gallery-01.webp" class="image-skeleton inline-style-003" alt="Hotel gallery" width="1600" height="900" loading="lazy" decoding="async">
 </picture>
       <div class="hero-copy">
         <h1 class="title">Hotel Gallery</h1>
@@ -111,8 +101,8 @@
 
     <section class="page-shell">
       <div class="page-intro">
-        <h2>Discover the atmosphere behind the brand</h2>
-        <p>Browse our curated photography by experience, from refined rooms to elegant events and dining spaces.</p>
+        <h2>Explore Our Hotel</h2>
+        <p>Experience every corner of Hatsey Kaleb Hotel through carefully curated images showcasing our rooms, dining, events, wellness, and exceptional hospitality.</p>
       </div>
 
       <div class="gallery-toolbar" role="toolbar" aria-label="Gallery filters">
@@ -120,41 +110,47 @@
         <button type="button" data-filter="rooms">Rooms</button>
         <button type="button" data-filter="restaurant">Restaurant</button>
         <button type="button" data-filter="events">Events</button>
+        <button type="button" data-filter="wedding">Wedding</button>
         <button type="button" data-filter="exterior">Exterior</button>
+        <button type="button" data-filter="spa">Spa</button>
+        <button type="button" data-filter="facilities">Facilities</button>
+        <button type="button" data-filter="coffee-shop">Coffee Shop</button>
+        <button type="button" data-filter="pool">Pool</button>
+        <button type="button" data-filter="business-center">Business Center</button>
       </div>
 
       <div class="gallery-grid" role="region" aria-label="Hotel gallery">
         <figure class="gallery-item" data-category="exterior"><a href="#" data-full="/assets/images/gallery-01.webp"><picture>
-  <source type="image/webp" srcset="/assets/images/gallery-02.webp 1600w" sizes="100vw">
-  <source type="image/webp" srcset="/assets/images/gallery-02.webp 1600w" sizes="100vw">
+  <source type="image/webp" srcset="/assets/images/gallery-01.webp 1600w" sizes="100vw">
+  <source type="image/webp" srcset="/assets/images/gallery-01.webp 1600w" sizes="100vw">
   <img src="/assets/images/gallery-01.webp" class="image-skeleton" alt="Hotel exterior gallery view" loading="lazy" decoding="async" />
 </picture><figcaption>Hotel exterior</figcaption></a></figure>
-        <figure class="gallery-item" data-category="rooms"><a href="#" data-full="/assets/images/gallery-02.webp"><picture>
+        <figure class="gallery-item" data-category="facilities"><a href="#" data-full="/assets/images/gallery-02.webp"><picture>
   <source type="image/avif" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <img src="/assets/images/gallery-02.webp" class="image-skeleton" alt="Hotel room gallery view" loading="lazy" decoding="async" />
 </picture><figcaption>Reception and lounge</figcaption></a></figure>
-        <figure class="gallery-item" data-category="rooms"><a href="#" data-full="/assets/images/deluxe-room.jpg"><picture>
+        <figure class="gallery-item" data-category="rooms"><a href="#" data-full="/assets/images/deluxe-room.webp"><picture>
   <source type="image/avif" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
-  <img src="/assets/images/deluxe-room.jpg" class="image-skeleton" alt="Deluxe room gallery view" loading="lazy" decoding="async" />
+  <img src="/assets/images/deluxe-room.webp" class="image-skeleton" alt="Deluxe room gallery view" loading="lazy" decoding="async" />
 </picture><figcaption>Deluxe room</figcaption></a></figure>
-        <figure class="gallery-item" data-category="restaurant"><a href="#" data-full="/assets/images/restaurant.jpg"><picture>
+        <figure class="gallery-item" data-category="restaurant"><a href="#" data-full="/assets/images/restaurant.webp"><picture>
   <source type="image/avif" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
-  <img src="/assets/images/restaurant.jpg" class="image-skeleton" alt="Restaurant gallery view" loading="lazy" decoding="async" />
+  <img src="/assets/images/restaurant.webp" class="image-skeleton" alt="Restaurant gallery view" loading="lazy" decoding="async" />
 </picture><figcaption>Restaurant ambiance</figcaption></a></figure>
         <figure class="gallery-item" data-category="events"><a href="#" data-full="/assets/images/conference.avif"><picture>
   <source type="image/avif" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <img src="/assets/images/conference.avif" class="image-skeleton" alt="Conference hall gallery view" loading="lazy" decoding="async" />
 </picture><figcaption>Conference hall</figcaption></a></figure>
-        <figure class="gallery-item" data-category="restaurant"><a href="#" data-full="/assets/images/coffee-ceremony.jpg"><picture>
+        <figure class="gallery-item" data-category="coffee-shop"><a href="#" data-full="/assets/images/coffee-ceremony.jpg"><picture>
   <source type="image/avif" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <img src="/assets/images/coffee-ceremony.jpg" class="image-skeleton" alt="Ethiopian coffee ceremony gallery view" loading="lazy" decoding="async" />
 </picture><figcaption>Dining experience</figcaption></a></figure>
-        <figure class="gallery-item" data-category="events"><a href="#" data-full="/assets/images/wedding.avif"><picture>
+        <figure class="gallery-item" data-category="wedding"><a href="#" data-full="/assets/images/wedding.avif"><picture>
   <source type="image/avif" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <img src="/assets/images/wedding.avif" class="image-skeleton" alt="Wedding setup gallery view" loading="lazy" decoding="async" />
@@ -164,6 +160,14 @@
   <source type="image/webp" srcset="/images/gallery-hero.svg 320w, /images/gallery-hero.svg 480w, /images/gallery-hero.svg 640w, /images/gallery-hero.svg 900w, /images/gallery-hero.svg 1200w, /images/gallery-hero.svg 1600w" sizes="100vw">
   <img src="/assets/images/gallery-02.webp" class="image-skeleton" alt="Event celebration gallery view" loading="lazy" decoding="async" />
 </picture><figcaption>Elegant event celebration</figcaption></a></figure>
+  <figure class="gallery-item" data-category="rooms"><a href="#" data-full="/assets/images/room-01.jpg"><img src="/assets/images/room-01.jpg" class="image-skeleton" alt="Guest room detail" loading="lazy" decoding="async" /><figcaption>Guest room detail</figcaption></a></figure>
+  <figure class="gallery-item" data-category="rooms"><a href="#" data-full="/assets/images/room-03.jpg"><img src="/assets/images/room-03.jpg" class="image-skeleton" alt="Hotel room interior" loading="lazy" decoding="async" /><figcaption>Room interior</figcaption></a></figure>
+  <figure class="gallery-item" data-category="coffee-shop"><a href="#" data-full="/assets/images/coffee-ceremony-01.jpg"><img src="/assets/images/coffee-ceremony-01.jpg" class="image-skeleton" alt="Ethiopian coffee ceremony" loading="lazy" decoding="async" /><figcaption>Coffee ceremony</figcaption></a></figure>
+  <figure class="gallery-item" data-category="exterior"><a href="#" data-full="/assets/images/entrance-01.jpg"><img src="/assets/images/entrance-01.jpg" class="image-skeleton" alt="Hotel entrance" loading="lazy" decoding="async" /><figcaption>Hotel entrance</figcaption></a></figure>
+  <figure class="gallery-item" data-category="pool"><a href="#" data-full="/assets/images/Swimming-01.avif"><img src="/assets/images/Swimming-01.avif" class="image-skeleton" alt="Hotel swimming pool" loading="lazy" decoding="async" /><figcaption>Swimming pool</figcaption></a></figure>
+  <figure class="gallery-item" data-category="spa"><a href="#" data-full="/assets/images/spa-01.webp"><img src="/assets/images/spa-01.webp" class="image-skeleton" alt="Spa treatment area" loading="lazy" decoding="async" /><figcaption>Spa treatment</figcaption></a></figure>
+  <figure class="gallery-item" data-category="business-center"><a href="#" data-full="/assets/images/business-center.jpg"><img src="/assets/images/business-center.jpg" class="image-skeleton" alt="Hotel business center" loading="lazy" decoding="async" /><figcaption>Business center</figcaption></a></figure>
+  <figure class="gallery-item" data-category="facilities"><a href="#" data-full="/assets/images/gym.webp"><img src="/assets/images/gym.webp" class="image-skeleton" alt="Hotel fitness facilities" loading="lazy" decoding="async" /><figcaption>Fitness facilities</figcaption></a></figure>
       </div>
     </section>
 
@@ -192,15 +196,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -210,10 +214,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -226,7 +231,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -236,6 +241,13 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>

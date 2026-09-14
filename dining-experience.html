@@ -43,10 +43,10 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -57,33 +57,23 @@
         <a href="gallery.html">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">???? English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">???? ????</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">???? ????</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -94,12 +84,12 @@
       <span>Dining Experience</span>
     </nav>
 
-    <section class="hero" style="min-height: 58vh;">
-      <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); z-index:1;"></div>
+    <section class="hero inline-style-018">
+      <div class="inline-style-028"></div>
       <picture>
   <source type="image/avif" srcset="/images/dining-experience-hero.svg 320w, /images/dining-experience-hero.svg 480w, /images/dining-experience-hero.svg 640w, /images/dining-experience-hero.svg 900w, /images/dining-experience-hero.svg 1200w, /images/dining-experience-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/dining-experience-hero.svg 320w, /images/dining-experience-hero.svg 480w, /images/dining-experience-hero.svg 640w, /images/dining-experience-hero.svg 900w, /images/dining-experience-hero.svg 1200w, /images/dining-experience-hero.svg 1600w" sizes="100vw">
-  <img src="/images/restaurant.svg" class="image-skeleton" alt="Fine dining" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+  <img src="/images/restaurant.svg" class="image-skeleton inline-style-020" alt="Fine dining" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
 </picture>
       <div class="hero-copy">
         <h1 class="title">Dining Experience</h1>
@@ -155,23 +145,23 @@
       <h2 class="section-heading">Signature Menus</h2>
       <div class="benefits-grid">
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin:0 0 8px; color:#fff;">Breakfast</h3>
+            <h3 class="inline-style-022">Breakfast</h3>
             <p>Start your day with fresh pastries, local coffee, and nutritious breakfast bowls.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin:0 0 8px; color:#fff;">Lunch</h3>
+            <h3 class="inline-style-022">Lunch</h3>
             <p>Light plates, seasonal salads, and chef-selected specialties crafted for midday dining.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin:0 0 8px; color:#fff;">Dinner</h3>
+            <h3 class="inline-style-022">Dinner</h3>
             <p>Elegant multi-course dinners featuring premium local produce and refined international flavors.</p>
           </div>
         </article>
@@ -217,7 +207,7 @@
       </div>
     </section>
 
-    <section style="text-align:center; padding:60px 0;">
+    <section class="inline-style-027">
       <h2 class="section-heading">Reserve Your Table</h2>
       <p class="section-intro">Enjoy unforgettable dining with hospitality tailored for every occasion.</p>
       <a href="booking.html" class="buttoncall">Reserve Now</a>
@@ -228,15 +218,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -246,10 +236,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -262,7 +253,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -272,6 +263,13 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>

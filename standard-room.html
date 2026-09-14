@@ -49,10 +49,10 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -63,33 +63,23 @@
         <a href="gallery.html">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">???? English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">???? ????</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">???? ????</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -110,7 +100,7 @@
       <picture>
   <source type="image/avif" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w, /images/standard-room-hero.svg 640w, /images/standard-room-hero.svg 900w, /images/standard-room-hero.svg 1200w, /images/standard-room-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w, /images/standard-room-hero.svg 640w, /images/standard-room-hero.svg 900w, /images/standard-room-hero.svg 1200w, /images/standard-room-hero.svg 1600w" sizes="100vw">
-  <img src="/assets/images/suite.jpg" class="image-skeleton hero__image" alt="Standard Room" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
+  <img src="/assets/images/suite.webp" class="image-skeleton hero__image" alt="Standard Room" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
 </picture>
       <div class="hero-copy">
         <div class="badge-row">
@@ -134,16 +124,16 @@
           <p class="stat label">Floor Space</p>
         </div>
         <div>
-          <div style="font-size: 1.8rem; color: var(--accent); font-weight: 700; margin-bottom: 8px;">2</div>
-          <p style="color: var(--muted); margin: 0;">Max Guests</p>
+          <div class="inline-style-044">2</div>
+          <p class="inline-style-045">Max Guests</p>
         </div>
         <div>
-          <div data-room-type="standard-room" style="font-size: 1.8rem; color: var(--accent); font-weight: 700; margin-bottom: 8px;">$145+</div>
-          <p style="color: var(--muted); margin: 0;">Per Night</p>
+          <div data-room-type="standard-room" class="inline-style-044">$145+</div>
+          <p class="inline-style-045">Per Night</p>
         </div>
         <div>
-          <div style="font-size: 1.8rem; color: var(--accent); font-weight: 700; margin-bottom: 8px;">24/7</div>
-          <p style="color: var(--muted); margin: 0;">Service Available</p>
+          <div class="inline-style-044">24/7</div>
+          <p class="inline-style-045">Service Available</p>
         </div>
       </div>
     </section>
@@ -154,78 +144,78 @@
       <div class="grid--room-details">
         <div>
           <h3 class="room-heading">What's Included</h3>
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
-            <li style="display: flex; gap: 12px; align-items: flex-start;">
-              <span style="color: var(--accent); font-weight: bold; margin-top: 2px;">&#10004;</span>
+          <ul class="inline-style-047">
+            <li class="inline-style-073">
+              <span class="inline-style-074">&#10004;</span>
               <div>
-                <strong style="color: white;">Premium Double Bed</strong>
-                <p style="color: var(--muted); margin: 4px 0 0; font-size: 0.9rem;">1000 thread count Egyptian cotton linens</p>
+                <strong class="inline-style-011">Premium Double Bed</strong>
+                <p class="inline-style-075">1000 thread count Egyptian cotton linens</p>
               </div>
             </li>
-            <li style="display: flex; gap: 12px; align-items: flex-start;">
-              <span style="color: var(--accent); font-weight: bold; margin-top: 2px;">&#10004;</span>
+            <li class="inline-style-073">
+              <span class="inline-style-074">&#10004;</span>
               <div>
-                <strong style="color: white;">Private Bathroom</strong>
-                <p style="color: var(--muted); margin: 4px 0 0; font-size: 0.9rem;">Modern shower with premium toiletries</p>
+                <strong class="inline-style-011">Private Bathroom</strong>
+                <p class="inline-style-075">Modern shower with premium toiletries</p>
               </div>
             </li>
-            <li style="display: flex; gap: 12px; align-items: flex-start;">
-              <span style="color: var(--accent); font-weight: bold; margin-top: 2px;">&#10004;</span>
+            <li class="inline-style-073">
+              <span class="inline-style-074">&#10004;</span>
               <div>
-                <strong style="color: white;">Work Desk</strong>
-                <p style="color: var(--muted); margin: 4px 0 0; font-size: 0.9rem;">Ergonomic desk with comfortable chair and lamp</p>
+                <strong class="inline-style-011">Work Desk</strong>
+                <p class="inline-style-075">Ergonomic desk with comfortable chair and lamp</p>
               </div>
             </li>
-            <li style="display: flex; gap: 12px; align-items: flex-start;">
-              <span style="color: var(--accent); font-weight: bold; margin-top: 2px;">&#10004;</span>
+            <li class="inline-style-073">
+              <span class="inline-style-074">&#10004;</span>
               <div>
-                <strong style="color: white;">Flat-Screen TV</strong>
-                <p style="color: var(--muted); margin: 4px 0 0; font-size: 0.9rem;">42" TV with DStv premium channels</p>
+                <strong class="inline-style-011">Flat-Screen TV</strong>
+                <p class="inline-style-075">42" TV with DStv premium channels</p>
               </div>
             </li>
-            <li style="display: flex; gap: 12px; align-items: flex-start;">
-              <span style="color: var(--accent); font-weight: bold; margin-top: 2px;">&#10004;</span>
+            <li class="inline-style-073">
+              <span class="inline-style-074">&#10004;</span>
               <div>
-                <strong style="color: white;">Climate Control</strong>
-                <p style="color: var(--muted); margin: 4px 0 0; font-size: 0.9rem;">Individual AC unit with temperature control</p>
+                <strong class="inline-style-011">Climate Control</strong>
+                <p class="inline-style-075">Individual AC unit with temperature control</p>
               </div>
             </li>
-            <li style="display: flex; gap: 12px; align-items: flex-start;">
-              <span style="color: var(--accent); font-weight: bold; margin-top: 2px;">&#10004;</span>
+            <li class="inline-style-073">
+              <span class="inline-style-074">&#10004;</span>
               <div>
-                <strong style="color: white;">Free Wi-Fi</strong>
-                <p style="color: var(--muted); margin: 4px 0 0; font-size: 0.9rem;">High-speed internet (100+ Mbps)</p>
+                <strong class="inline-style-011">Free Wi-Fi</strong>
+                <p class="inline-style-075">High-speed internet (100+ Mbps)</p>
               </div>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 style="color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px;">Amenities</h3>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; text-align: center;">
-              <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-              <p style="color: white; font-weight: 500; margin: 0; font-size: 0.9rem;">Room Service</p>
+          <h3 class="inline-style-076">Amenities</h3>
+          <div class="inline-style-077">
+            <div class="inline-style-078">
+              <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+              <p class="inline-style-079">Room Service</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; text-align: center;">
-              <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-              <p style="color: white; font-weight: 500; margin: 0; font-size: 0.9rem;">24/7 Room Service</p>
+            <div class="inline-style-078">
+              <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+              <p class="inline-style-079">24/7 Room Service</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; text-align: center;">
-              <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-              <p style="color: white; font-weight: 500; margin: 0; font-size: 0.9rem;">Safe & Secure</p>
+            <div class="inline-style-078">
+              <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+              <p class="inline-style-079">Safe & Secure</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; text-align: center;">
-              <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-              <p style="color: white; font-weight: 500; margin: 0; font-size: 0.9rem;">Housekeeping</p>
+            <div class="inline-style-078">
+              <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+              <p class="inline-style-079">Housekeeping</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; text-align: center;">
-              <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-              <p style="color: white; font-weight: 500; margin: 0; font-size: 0.9rem;">Complimentary Breakfast</p>
+            <div class="inline-style-078">
+              <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+              <p class="inline-style-079">Complimentary Breakfast</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; text-align: center;">
-              <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-              <p style="color: white; font-weight: 500; margin: 0; font-size: 0.9rem;">Concierge</p>
+            <div class="inline-style-078">
+              <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+              <p class="inline-style-079">Concierge</p>
             </div>
           </div>
         </div>
@@ -233,95 +223,95 @@
     </section>
 
     <!-- ROOM GALLERY -->
-    <section style="margin: 80px 0;">
+    <section class="inline-style-080">
       <h2 class="section-heading">Room Gallery</h2>
       <p class="section-intro">Explore our Standard Room through these carefully curated images.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px;">
-        <figure style="margin: 0; overflow: hidden; border-radius: 12px; aspect-ratio: 4/3;">
-          <a href="#" data-full="/images/standard-room-hero.svg" style="display: block; width: 100%; height: 100%; overflow: hidden;" aria-label="View Room Image 1">
+      <div class="inline-style-081">
+        <figure class="inline-style-082">
+          <a href="#" data-full="/images/standard-room-hero.svg" aria-label="View Room Image 1" class="inline-style-083">
             <picture>
   <source type="image/avif" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
   <source type="image/webp" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
-  <img src="/images/bedroom-standard.svg" class="image-skeleton" alt="Standard room overview" width="600" height="450" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; cursor: pointer;">
+  <img src="/images/bedroom-standard.svg" class="image-skeleton inline-style-084" alt="Standard room overview" width="600" height="450" loading="lazy" decoding="async">
 </picture>
           </a>
-          <figcaption style="color: var(--muted); font-size: 0.9rem; padding: 12px 0;">Room overview with comfortable bed</figcaption>
+          <figcaption class="inline-style-085">Room overview with comfortable bed</figcaption>
         </figure>
-        <figure style="margin: 0; overflow: hidden; border-radius: 12px; aspect-ratio: 4/3;">
-          <a href="#" data-full="/images/standard-room-hero.svg" style="display: block; width: 100%; height: 100%; overflow: hidden;" aria-label="View Room Image 2">
+        <figure class="inline-style-082">
+          <a href="#" data-full="/images/standard-room-hero.svg" aria-label="View Room Image 2" class="inline-style-083">
             <picture>
   <source type="image/avif" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
   <source type="image/webp" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
-  <img src="/images/bedroom-standard.svg" class="image-skeleton" alt="Modern bathroom" width="600" height="450" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; cursor: pointer;">
+  <img src="/images/bedroom-standard.svg" class="image-skeleton inline-style-084" alt="Modern bathroom" width="600" height="450" loading="lazy" decoding="async">
 </picture>
           </a>
-          <figcaption style="color: var(--muted); font-size: 0.9rem; padding: 12px 0;">Modern bathroom with premium fixtures</figcaption>
+          <figcaption class="inline-style-085">Modern bathroom with premium fixtures</figcaption>
         </figure>
-        <figure style="margin: 0; overflow: hidden; border-radius: 12px; aspect-ratio: 4/3;">
-          <a href="#" data-full="/images/standard-room-hero.svg" style="display: block; width: 100%; height: 100%; overflow: hidden;" aria-label="View Room Image 3">
+        <figure class="inline-style-082">
+          <a href="#" data-full="/images/standard-room-hero.svg" aria-label="View Room Image 3" class="inline-style-083">
             <picture>
   <source type="image/avif" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
   <source type="image/webp" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
-  <img src="/images/bedroom-standard.svg" class="image-skeleton" alt="Work desk area" width="600" height="450" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; cursor: pointer;">
+  <img src="/images/bedroom-standard.svg" class="image-skeleton inline-style-084" alt="Work desk area" width="600" height="450" loading="lazy" decoding="async">
 </picture>
           </a>
-          <figcaption style="color: var(--muted); font-size: 0.9rem; padding: 12px 0;">Dedicated work desk and seating</figcaption>
+          <figcaption class="inline-style-085">Dedicated work desk and seating</figcaption>
         </figure>
-        <figure style="margin: 0; overflow: hidden; border-radius: 12px; aspect-ratio: 4/3;">
-          <a href="#" data-full="/images/standard-room-hero.svg" style="display: block; width: 100%; height: 100%; overflow: hidden;" aria-label="View Room Image 4">
+        <figure class="inline-style-082">
+          <a href="#" data-full="/images/standard-room-hero.svg" aria-label="View Room Image 4" class="inline-style-083">
             <picture>
   <source type="image/avif" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
   <source type="image/webp" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
-  <img src="/images/bedroom-standard.svg" class="image-skeleton" alt="TV entertainment area" width="600" height="450" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; cursor: pointer;">
+  <img src="/images/bedroom-standard.svg" class="image-skeleton inline-style-084" alt="TV entertainment area" width="600" height="450" loading="lazy" decoding="async">
 </picture>
           </a>
-          <figcaption style="color: var(--muted); font-size: 0.9rem; padding: 12px 0;">Entertainment with 42" flat-screen TV</figcaption>
+          <figcaption class="inline-style-085">Entertainment with 42" flat-screen TV</figcaption>
         </figure>
-        <figure style="margin: 0; overflow: hidden; border-radius: 12px; aspect-ratio: 4/3;">
-          <a href="#" data-full="/images/standard-room-hero.svg" style="display: block; width: 100%; height: 100%; overflow: hidden;" aria-label="View Room Image 5">
+        <figure class="inline-style-082">
+          <a href="#" data-full="/images/standard-room-hero.svg" aria-label="View Room Image 5" class="inline-style-083">
             <picture>
   <source type="image/avif" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
   <source type="image/webp" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
-  <img src="/images/bedroom-standard.svg" class="image-skeleton" alt="Room lighting" width="600" height="450" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; cursor: pointer;">
+  <img src="/images/bedroom-standard.svg" class="image-skeleton inline-style-084" alt="Room lighting" width="600" height="450" loading="lazy" decoding="async">
 </picture>
           </a>
-          <figcaption style="color: var(--muted); font-size: 0.9rem; padding: 12px 0;">Ambient lighting for comfort</figcaption>
+          <figcaption class="inline-style-085">Ambient lighting for comfort</figcaption>
         </figure>
-        <figure style="margin: 0; overflow: hidden; border-radius: 12px; aspect-ratio: 4/3;">
-          <a href="#" data-full="/images/standard-room-hero.svg" style="display: block; width: 100%; height: 100%; overflow: hidden;" aria-label="View Room Image 6">
+        <figure class="inline-style-082">
+          <a href="#" data-full="/images/standard-room-hero.svg" aria-label="View Room Image 6" class="inline-style-083">
             <picture>
   <source type="image/avif" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
   <source type="image/webp" srcset="/images/standard-room-hero.svg 320w, /images/standard-room-hero.svg 480w" sizes="(max-width: 900px) 100vw, 600px">
-  <img src="/images/bedroom-standard.svg" class="image-skeleton" alt="Room details" width="600" height="450" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; cursor: pointer;">
+  <img src="/images/bedroom-standard.svg" class="image-skeleton inline-style-084" alt="Room details" width="600" height="450" loading="lazy" decoding="async">
 </picture>
           </a>
-          <figcaption style="color: var(--muted); font-size: 0.9rem; padding: 12px 0;">Attention to comfort details</figcaption>
+          <figcaption class="inline-style-085">Attention to comfort details</figcaption>
         </figure>
       </div>
     </section>
 
     <!-- WHY CHOOSE THIS ROOM -->
-    <section style="background: linear-gradient(135deg, rgba(241, 188, 11, 0.06), transparent); border: 1px solid rgba(241, 188, 11, 0.1); border-radius: 16px; padding: 40px; margin: 60px 0;">
+    <section class="inline-style-051">
       <h2 class="section-heading">Why Choose Standard Room?</h2>
       <div class="benefits-grid">
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Best Value</h3>
+            <h3 class="inline-style-052">Best Value</h3>
             <p>Exceptional quality at an affordable price point. Perfect for budget-conscious travelers without compromising comfort.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Ideal Location</h3>
+            <h3 class="inline-style-052">Ideal Location</h3>
             <p>Centrally positioned in the hotel for easy access to all amenities, dining, and facilities.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin: 0 0 8px; color: #fff;">Perfect for Solo & Couples</h3>
+            <h3 class="inline-style-052">Perfect for Solo & Couples</h3>
             <p>Designed with comfort in mind for individual travelers and couples seeking intimate accommodation.</p>
           </div>
         </article>
@@ -329,7 +319,7 @@
     </section>
 
     <!-- OTHER ROOM TYPES -->
-    <section style="margin: 80px 0;">
+    <section class="inline-style-080">
       <h2 class="section-heading">Explore Other Room Types</h2>
       <p class="section-intro">Discover our other luxurious accommodation options.</p>
       <div class="room-grid">
@@ -382,10 +372,10 @@
     </section>
 
     <!-- CTA SECTION -->
-    <section style="text-align: center; padding: 60px 0; background: linear-gradient(135deg, rgba(241, 188, 11, 0.08) 0%, transparent 100%); border: 1px solid rgba(241, 188, 11, 0.15); border-radius: 16px;">
+    <section class="inline-style-086">
       <h2 class="section-heading">Ready to Book?</h2>
-      <p class="section-intro" style="margin-bottom: 32px;">Secure your Standard Room today and experience our warm hospitality.</p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <p class="section-intro inline-style-013">Secure your Standard Room today and experience our warm hospitality.</p>
+      <div class="inline-style-014">
         <a href="booking.html" class="buttoncall">Book Now</a>
         <a href="contact.html" class="button-outline">Contact Us</a>
       </div>
@@ -397,15 +387,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -415,10 +405,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -431,7 +422,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -441,6 +432,13 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>

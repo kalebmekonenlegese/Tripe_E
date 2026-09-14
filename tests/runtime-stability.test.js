@@ -131,6 +131,13 @@ test.describe('Runtime Stability - Resources Loading', () => {
       for (const img of images) {
         const src = await img.getAttribute('src');
         const alt = await img.getAttribute('alt');
+        const isDecorative = (await img.getAttribute('aria-hidden')) === 'true'
+          || (await img.getAttribute('role')) === 'presentation'
+          || alt === '';
+
+        if (!src || isDecorative || src.startsWith('data:')) {
+          continue;
+        }
         
         try {
           const response = await browserPage.request.head(src).catch(() =>

@@ -19,56 +19,7 @@
   <title>FAQ | Hatsey Kaleb Hotel</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='82' font-size='82'%3EH%3C/text%3E%3C/svg%3E" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    details {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-      cursor: pointer;
-    }
-
-    details[open] {
-      background: rgba(241,188,11,0.05);
-      border-color: rgba(241,188,11,0.2);
-    }
-
-    summary {
-      color: var(--text);
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-    }
-
-    summary:hover {
-      color: var(--accent);
-    }
-
-    summary::marker {
-      content: '';
-    }
-
-    .faq-toggle {
-      color: var(--accent);
-      font-size: 1.5rem;
-      transition: transform 200ms;
-      pointer-events: none;
-    }
-
-    details[open] .faq-toggle {
-      transform: rotate(180deg);
-    }
-
-    details p {
-      color: var(--muted);
-      margin: 16px 0 0 0;
-      line-height: 1.6;
-    }
-  </style>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -244,10 +195,10 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -258,33 +209,23 @@
         <a href="gallery.html">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html" class="active">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">???? English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">???? ????</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">???? ????</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -297,12 +238,12 @@
       <span>FAQ</span>
     </nav>
 
-    <section class="hero" style="min-height: 40vh;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.5), transparent); z-index: 1;"></div>
+    <section class="hero inline-style-054">
+      <div class="inline-style-004"></div>
       <picture>
   <source type="image/avif" srcset="/images/faq-hero.svg 320w, /images/faq-hero.svg 480w, /images/faq-hero.svg 640w, /images/faq-hero.svg 900w, /images/faq-hero.svg 1200w, /images/faq-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/faq-hero.svg 320w, /images/faq-hero.svg 480w, /images/faq-hero.svg 640w, /images/faq-hero.svg 900w, /images/faq-hero.svg 1200w, /images/faq-hero.svg 1600w" sizes="100vw">
-  <img src="/images/hotel-hero.svg" class="image-skeleton" alt="FAQ" width="1600" height="900" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+  <img src="/assets/images/requently-Asked-Questions.jpg" class="image-skeleton inline-style-003" alt="Frequently asked questions" width="1600" height="900" loading="lazy" decoding="async">
 </picture>
       <div class="hero-copy">
         <h1 class="title">Frequently Asked Questions</h1>
@@ -310,8 +251,8 @@
       </div>
     </section>
 
-    <section id="faq-content" style="max-width: 700px; margin: 60px auto;">
-      <h2 class="section-heading" style="text-align: center;">Booking & Reservations</h2>
+    <section id="faq-content" class="inline-style-055">
+      <h2 class="section-heading inline-style-016">Booking & Reservations</h2>
 
       <details>
         <summary>How do I make a reservation? <span class="faq-toggle">›</span></summary>
@@ -338,7 +279,7 @@
         <p>A deposit equal to one night's stay is required to confirm reservations. The deposit is credited toward your final bill.</p>
       </details>
 
-      <h2 class="section-heading" style="text-align: center; margin-top: 60px;">Rooms & Facilities</h2>
+      <h2 class="section-heading inline-style-056">Rooms & Facilities</h2>
 
       <details>
         <summary>What amenities are included in the rooms? <span class="faq-toggle">›</span></summary>
@@ -365,7 +306,7 @@
         <p>Yes, we offer complimentary parking for all hotel guests in our secure parking area.</p>
       </details>
 
-      <h2 class="section-heading" style="text-align: center; margin-top: 60px;">Dining & Services</h2>
+      <h2 class="section-heading inline-style-056">Dining & Services</h2>
 
       <details>
         <summary>What dining options are available? <span class="faq-toggle">›</span></summary>
@@ -387,7 +328,7 @@
         <p>Yes, we host weddings, conferences, corporate events, and celebrations. Contact our events team for customized packages and planning assistance.</p>
       </details>
 
-      <h2 class="section-heading" style="text-align: center; margin-top: 60px;">Payment & Special Offers</h2>
+      <h2 class="section-heading inline-style-056">Payment & Special Offers</h2>
 
       <details>
         <summary>What payment methods do you accept? <span class="faq-toggle">›</span></summary>
@@ -409,9 +350,9 @@
         <p>Yes, if you find a lower rate elsewhere for the same room and dates, we'll match it and offer an additional discount.</p>
       </details>
 
-      <h2 class="section-heading" style="text-align: center; margin-top: 60px;">Still Have Questions?</h2>
-      <p style="text-align: center; color: var(--muted); margin: 32px 0;">Can't find the answer you're looking for? Contact our team directly.</p>
-      <div style="text-align: center;">
+      <h2 class="section-heading inline-style-056">Still Have Questions?</h2>
+      <p class="inline-style-057">Can't find the answer you're looking for? Contact our team directly.</p>
+      <div class="inline-style-016">
         <a href="contact.html" class="buttoncall">Contact Us</a>
       </div>
     </section>
@@ -421,15 +362,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -439,10 +380,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -455,7 +397,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -465,6 +407,13 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>

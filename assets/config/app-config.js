@@ -1,6 +1,6 @@
 // filepath: assets/config/app-config.js
 
-const defaultApiUrl = 'https://hatsey-kaleb-backend.onrender.com';
+const defaultApiUrl = 'http://localhost:3000';
 
 const configuredApiUrl =
   typeof import.meta !== 'undefined' && import.meta.env

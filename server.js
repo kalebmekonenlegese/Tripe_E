@@ -76,9 +76,29 @@ if (process.env.SENTRY_DSN && Sentry) {
   });
 }
 
-const corsOrigins = process.env.CORS_ORIGIN
-  ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim())
-  : [process.env.FRONTEND_URL || 'http://localhost:5173'];
+const configuredCorsOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim()).filter(Boolean)
+  : [];
+
+const localDevelopmentOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://0.0.0.0:3000',
+  'http://localhost:5000',
+  'http://127.0.0.1:5000',
+  'http://0.0.0.0:5000',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://0.0.0.0:5173'
+];
+
+const corsOrigins = [...new Set([
+  ...configuredCorsOrigins,
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+  ...localDevelopmentOrigins,
+  'https://latest-nine-sage.vercel.app',
+  'https://latest-t199.onrender.com'
+])];
 
 const isValidRequestId = (value) =>
   typeof value === 'string' && /^[A-Za-z0-9:_\-.]{8,128}$/.test(value);
@@ -93,7 +113,13 @@ const corsOptions = {
     if (!origin) {
       return callback(null, true);
     }
-    if (corsOrigins.includes(origin)) {
+
+    const isAllowedOrigin =
+      corsOrigins.includes(origin) ||
+      /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?$/.test(origin) ||
+      /^https:\/\/.*\.vercel\.app$/i.test(origin);
+
+    if (isAllowedOrigin) {
       return callback(null, true);
     }
     logger.warn('Blocked CORS request from invalid origin: %s', origin);
@@ -206,6 +232,18 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/') && (req.method === 'POST' || req.method === 'PUT' || req.method === 'PATCH' || req.method === 'DELETE')) {
+    console.log({
+      origin: req.headers.origin,
+      cookieToken: req.cookies?.csrfToken,
+      headerToken: req.get('X-CSRF-Token'),
+      cookies: req.headers.cookie
+    });
+  }
+  next();
+});
+
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -287,16 +325,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.get('/api/csrf-token', (req, res) => {
-  const csrfCookieName = process.env.CSRF_COOKIE_NAME || 'csrfToken';
   const csrfToken = typeof req.csrfToken === 'function' ? req.csrfToken() : 'test-csrf-token';
-
-  res.cookie(csrfCookieName, csrfToken, {
-    httpOnly: true,
-    secure: secureCookies,
-    sameSite: cookieSameSite,
-    maxAge: 3600000,
-    path: '/'
-  });
 
   res.cookie('csrf-secure', secureCookies ? 'true' : 'false', {
     httpOnly: true,

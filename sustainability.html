@@ -43,10 +43,10 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -57,33 +57,23 @@
         <a href="gallery.html">gallery</a>
         <a href="about.html" class="active">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">???? English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">???? ????</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">???? ????</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -94,12 +84,12 @@
       <span>Sustainability</span>
     </nav>
 
-    <section class="hero" style="min-height: 58vh;">
-      <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.55)); z-index:1;"></div>
+    <section class="hero inline-style-018">
+      <div class="inline-style-019"></div>
       <picture>
   <source type="image/avif" srcset="/images/sustainability-hero.svg 320w, /images/sustainability-hero.svg 480w, /images/sustainability-hero.svg 640w, /images/sustainability-hero.svg 900w, /images/sustainability-hero.svg 1200w, /images/sustainability-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/sustainability-hero.svg 320w, /images/sustainability-hero.svg 480w, /images/sustainability-hero.svg 640w, /images/sustainability-hero.svg 900w, /images/sustainability-hero.svg 1200w, /images/sustainability-hero.svg 1600w" sizes="100vw">
-  <img src="/images/sustainability.svg" class="image-skeleton" alt="Sustainability" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+  <img src="/images/sustainability.svg" class="image-skeleton inline-style-020" alt="Sustainability" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
 </picture>
       <div class="hero-copy">
         <h1 class="title">Sustainability</h1>
@@ -115,23 +105,23 @@
       <h2 class="section-heading">Environmental Initiatives</h2>
       <div class="benefits-grid">
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin:0 0 8px; color:#fff;">Energy Efficiency</h3>
+            <h3 class="inline-style-022">Energy Efficiency</h3>
             <p>LED lighting, smart thermostats, and efficient systems reduce energy usage across the property.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin:0 0 8px; color:#fff;">Water Conservation</h3>
+            <h3 class="inline-style-022">Water Conservation</h3>
             <p>Water-saving fixtures, linen reuse programs, and sustainable irrigation minimize water impact.</p>
           </div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
           <div>
-            <h3 style="margin:0 0 8px; color:#fff;">Waste Management</h3>
+            <h3 class="inline-style-022">Waste Management</h3>
             <p>Recycling stations, composting, and reduced single-use plastics preserve local resources.</p>
           </div>
         </article>
@@ -164,42 +154,42 @@
 
     <section>
       <h2 class="section-heading">Impact Metrics</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; margin-top:40px;">
-        <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px;">
-          <h3 style="color:#fff; margin-top:0;">35% Energy Reduction</h3>
-          <p style="color:var(--muted);">Achieved through efficient systems and guest conservation programs.</p>
+      <div class="inline-style-087">
+        <div class="inline-style-024">
+          <h3 class="inline-style-025">35% Energy Reduction</h3>
+          <p class="inline-style-026">Achieved through efficient systems and guest conservation programs.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px;">
-          <h3 style="color:#fff; margin-top:0;">50% Waste Diverted</h3>
-          <p style="color:var(--muted);">Redirected organic and recyclable waste from landfill through recycling and composting.</p>
+        <div class="inline-style-024">
+          <h3 class="inline-style-025">50% Waste Diverted</h3>
+          <p class="inline-style-026">Redirected organic and recyclable waste from landfill through recycling and composting.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px;">
-          <h3 style="color:#fff; margin-top:0;">100% Local Sourcing</h3>
-          <p style="color:var(--muted);">Our restaurant prioritizes locally sourced ingredients for fresh and responsible dining.</p>
+        <div class="inline-style-024">
+          <h3 class="inline-style-025">100% Local Sourcing</h3>
+          <p class="inline-style-026">Our restaurant prioritizes locally sourced ingredients for fresh and responsible dining.</p>
         </div>
       </div>
     </section>
 
-    <section style="background: linear-gradient(135deg, rgba(241, 188, 11, 0.06), transparent); border: 1px solid rgba(241, 188, 11, 0.1); border-radius: 16px; padding: 40px; margin: 60px 0;">
+    <section class="inline-style-051">
       <h2 class="section-heading">Responsible Hospitality</h2>
       <p class="section-intro">We are committed to reducing our footprint while delivering exceptional guest experiences and supporting the people and culture of our region.</p>
       <div class="benefits-grid">
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin:0 0 8px; color:#fff;">Eco-Friendly Choices</h3><p>Simple actions from room amenities to kitchen practices help protect the environment.</p></div>
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+          <div><h3 class="inline-style-022">Eco-Friendly Choices</h3><p>Simple actions from room amenities to kitchen practices help protect the environment.</p></div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin:0 0 8px; color:#fff;">Community First</h3><p>Our programs focus on local empowerment, education, and meaningful partnerships.</p></div>
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+          <div><h3 class="inline-style-022">Community First</h3><p>Our programs focus on local empowerment, education, and meaningful partnerships.</p></div>
         </article>
         <article class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin:0 0 8px; color:#fff;">Transparent Practices</h3><p>We share our progress and commitments clearly with guests and partners.</p></div>
+          <img alt="" role="presentation" src="/images/lordicon.png" class="lord-icon" aria-hidden="true" loading="lazy" decoding="async">
+          <div><h3 class="inline-style-022">Transparent Practices</h3><p>We share our progress and commitments clearly with guests and partners.</p></div>
         </article>
       </div>
     </section>
 
-    <section style="text-align:center; padding:60px 0;">
+    <section class="inline-style-027">
       <h2 class="section-heading">Stay Sustainably</h2>
       <p class="section-intro">Book your stay with confidence knowing that every part of your experience supports a greener future.</p>
       <a href="booking.html" class="buttoncall">Book Sustainably</a>
@@ -210,15 +200,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -228,10 +218,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -244,7 +235,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -254,6 +245,13 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>

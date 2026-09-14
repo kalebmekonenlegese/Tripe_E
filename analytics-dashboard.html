@@ -7,19 +7,14 @@
   <meta name="robots" content="noindex,nofollow">
   <link rel="canonical" href="https://hatseykalebhotel.com/analytics-dashboard.html" />
   <title>Analytics Dashboard</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
-    .card { border: 1px solid #ddd; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
-    code { background: #f3f3f3; padding: 0.2rem 0.4rem; border-radius: 4px; }
-  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="topbar" role="banner">
     <div class="topbar-inner">
-      <div class="logo" aria-label="Hatsey Kaleb Hotel home">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo" />
+      <div class="logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -30,11 +25,27 @@
         <a href="gallery.html">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
+      <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
+        <span class="hamburger" aria-hidden="true"></span>
+        <span>menu</span>
+      </button>
+      <div class="language-menu">
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
+        <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
+        </div>
+      </div>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
+      </div>
     </div>
   </header>
-
-  <main role="main" id="main-content">
+<main role="main" id="main-content">
     <h1>Analytics Dashboard</h1>
     <p>This page summarizes the local analytics events collected in the browser for the hotel website.</p>
     <div class="card" id="summary"></div>
@@ -52,7 +63,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
             <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
@@ -64,13 +75,61 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="restaurant.html">Dining</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="ai-assistant.html">AI Concierge</a></li>
+          <li><a href="virtual-tour.html">Virtual Tour</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="transportation.html">Transportation</a></li>
+          <li><a href="weddings.html">Weddings</a></li>
+          <li><a href="attractions.html">Attractions</a></li>
+          <li><a href="spa-wellness.html">Spa & Wellness</a></li>
+          <li><a href="hotel.html">Hotel</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>More</h3>
+        <ul>
+          <li><a href="standard-room.html">Standard Room</a></li>
+          <li><a href="deluxe-room.html">Deluxe Room</a></li>
+          <li><a href="executive-suite.html">Executive Suite</a></li>
+          <li><a href="family-room.html">Family Room</a></li>
+          <li><a href="dining-experience.html">Dining Experience</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>
-  </footer>
 
-  <script>
+    <div class="footer-bottom">
+      <div>© 2025 Hatsey Kaleb Hotel. All rights reserved.</div>
+      <div><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="cookie-policy.html">Cookies</a></div>
+      <div class="social-links">
+        <a href="https://facebook.com/hatseykalebhotel" target="_blank" rel="noopener">facebook</a>
+        <a href="https://instagram.com/hatseykalebhotel" target="_blank" rel="noopener">instagram</a>
+        <a href="https://wa.me/251914754143" target="_blank" rel="noopener">whatsapp</a>
+      </div>
+    </div>
+  </footer>
+<script>
     function readMetrics() {
       try {
         return JSON.parse(localStorage.getItem('hatseyAnalyticsMetrics') || '{}');

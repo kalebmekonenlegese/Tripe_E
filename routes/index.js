@@ -7,6 +7,7 @@ const availabilityRoutes = require('./availabilityRoutes');
 const analyticsRoutes = require('./analyticsRoutes');
 const reviewRoutes = require('./reviewRoutes');
 const newsletterRoutes = require('./newsletterRoutes');
+const conciergeRoutes = require('./conciergeRoutes');
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.use('/availability', availabilityRoutes);
 router.use('/analytics', analyticsRoutes);
 router.use('/reviews', reviewRoutes);
 router.use('/newsletter', newsletterRoutes);
+router.use('/concierge', conciergeRoutes);
 
 module.exports = router;

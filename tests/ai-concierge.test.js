@@ -10,8 +10,8 @@ test('AI concierge basic interactions', async ({ page }) => {
   test.skip(!(await widget.count()), 'No concierge widget found');
 
   const concierge = page.locator('#ai-concierge');
-  await expect(concierge).toHaveCSS('left', '18px');
-  await expect(concierge).not.toHaveCSS('right', '18px');
+  await expect(concierge).toHaveCSS('right', '18px');
+  await expect(concierge).not.toHaveCSS('left', '18px');
 
   const openBtn = page.locator('#concierge-toggle, #concierge button, .ai-concierge button, button[data-open="concierge"]');
   if (await openBtn.count()) {

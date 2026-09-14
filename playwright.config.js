@@ -30,6 +30,7 @@ module.exports = {
   testIgnore: [
     '**/node_modules/**',
     '**/backend_*.js',
+    '**/app_config_default_backend.test.js',
     '**/security-hardening.spec.js'
   ],
   timeout: 60000,

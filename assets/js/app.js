@@ -89,38 +89,38 @@ function initializeSuppliedPictureSources() {
 
 function initializeSuppliedPlaceholderMedia() {
   const replacements = [
-    ['bedroom-deluxe', '/assets/images/deluxe-room.jpg'],
-    ['deluxe-room', '/assets/images/deluxe-room.jpg'],
-    ['bedroom-standard', '/assets/images/suite.jpg'],
-    ['rooms', '/assets/images/deluxe-room.jpg'],
-    ['bedroom-exec', '/assets/images/suite.jpg'],
-    ['executive-suite', '/assets/images/suite.jpg'],
-    ['restaurant', '/assets/images/restaurant.jpg'],
+    ['bedroom-deluxe', '/assets/images/deluxe-room.webp'],
+    ['deluxe-room', '/assets/images/deluxe-room.webp'],
+    ['bedroom-standard', '/assets/images/suite.webp'],
+    ['rooms', '/assets/images/deluxe-room.webp'],
+    ['bedroom-exec', '/assets/images/suite.webp'],
+    ['executive-suite', '/assets/images/suite.webp'],
+    ['restaurant', '/assets/images/restaurant.webp'],
     ['spa', '/assets/images/spa.webp'],
     ['wedding', '/assets/images/wedding.avif'],
     ['conference', '/assets/images/conference.avif'],
     ['events', '/assets/images/conference.avif'],
     ['transportation', '/assets/images/airport-transfer.jpg'],
     ['airport', '/assets/images/airport-transfer.jpg'],
-    ['facilities', '/assets/images/gym.png'],
+    ['facilities', '/assets/images/gym.webp'],
     ['gallery', '/assets/images/gallery-01.webp'],
     ['hotel-exterior', '/assets/images/hotel-exterior.jpg'],
     ['attractions', '/assets/images/drone.jpg']
   ];
   const pageAsset = {
-    '/rooms.html': '/assets/images/deluxe-room.jpg',
-    '/standard-room.html': '/assets/images/suite.jpg',
-    '/deluxe-room.html': '/assets/images/deluxe-room.jpg',
-    '/executive-suite.html': '/assets/images/suite.jpg',
-    '/family-room.html': '/assets/images/suite.jpg',
-    '/restaurant.html': '/assets/images/restaurant.jpg',
-    '/dining-experience.html': '/assets/images/restaurant.jpg',
+    '/rooms.html': '/assets/images/deluxe-room.webp',
+    '/standard-room.html': '/assets/images/suite.webp',
+    '/deluxe-room.html': '/assets/images/deluxe-room.webp',
+    '/executive-suite.html': '/assets/images/suite.webp',
+    '/family-room.html': '/assets/images/suite.webp',
+    '/restaurant.html': '/assets/images/restaurant.webp',
+    '/dining-experience.html': '/assets/images/restaurant.webp',
     '/spa-wellness.html': '/assets/images/spa.webp',
     '/events.html': '/assets/images/conference.avif',
     '/conferences.html': '/assets/images/conference.avif',
     '/weddings.html': '/assets/images/wedding.avif',
     '/transportation.html': '/assets/images/airport-transfer.jpg',
-    '/facilities.html': '/assets/images/gym.png',
+    '/facilities.html': '/assets/images/gym.webp',
     '/gallery.html': '/assets/images/gallery-01.webp'
   };
   const fallbackAsset = pageAsset[window.location.pathname];
@@ -128,7 +128,9 @@ function initializeSuppliedPlaceholderMedia() {
   document.querySelectorAll('img').forEach((image) => {
     const source = image.getAttribute('src') || '';
     if (/logo|lordicon/i.test(source) || /logo|icon/i.test(image.alt || '')) return;
-    const match = replacements.find(([token]) => source.toLowerCase().includes(token));
+    const match = source.startsWith('/images/')
+      ? replacements.find(([token]) => source.toLowerCase().includes(token))
+      : null;
     if (match) {
       image.setAttribute('src', match[1]);
       image.classList.add('photo-ready');
@@ -259,6 +261,103 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   document.body.appendChild(button);
 })();
 
+(function initializeConcierge() {
+  if (document.querySelector('#ai-concierge')) return;
+  const api = window.hotelAPI;
+
+  const widget = document.createElement('div');
+  widget.id = 'ai-concierge';
+  widget.innerHTML = `
+    <button id="concierge-toggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="concierge-dialog" aria-label="Open AI Concierge">chat</button>
+    <div id="concierge-dialog" role="dialog" aria-modal="false" aria-label="Hotel Concierge Assistant" hidden>
+      <div class="concierge-header" role="region" aria-label="Concierge header">
+        <div class="concierge-title"><strong>Hatsey Concierge</strong><small>How can I help?</small></div>
+        <div class="concierge-controls"><select id="concierge-lang" aria-label="Choose language"><option value="en">English</option><option value="am">Amharic</option><option value="ti">Tigrinya</option></select><button id="concierge-close" class="concierge-close" type="button" aria-label="Close concierge">×</button></div>
+      </div>
+      <div class="concierge-body"><div id="concierge-messages" class="concierge-messages" role="log" aria-live="polite"></div><p id="concierge-status" class="concierge-status" role="status" aria-live="polite"></p><form id="concierge-form" class="concierge-form"><textarea id="concierge-input" rows="1" placeholder="Ask about rooms, dining, or your stay..." aria-label="Ask Hatsey Concierge"></textarea><button id="concierge-send" type="submit">Send</button></form></div>
+      <div class="concierge-footer"><small>Hatsey Kaleb Hotel concierge</small></div>
+    </div>`;
+  document.body.appendChild(widget);
+
+  const toggle = widget.querySelector('#concierge-toggle');
+  const dialog = widget.querySelector('#concierge-dialog');
+  const closeButton = widget.querySelector('#concierge-close');
+  const form = widget.querySelector('#concierge-form');
+  const input = widget.querySelector('#concierge-input');
+  const messages = widget.querySelector('#concierge-messages');
+  const status = widget.querySelector('#concierge-status');
+  const send = widget.querySelector('#concierge-send');
+  const history = [];
+
+  const appendMessage = (text, who = 'agent') => {
+    const bubble = document.createElement('div');
+    bubble.className = `concierge-bubble ${who}`;
+    bubble.setAttribute('role', 'article');
+    bubble.textContent = text;
+    messages.appendChild(bubble);
+    messages.scrollTop = messages.scrollHeight;
+  };
+
+  const closeDialog = () => {
+    dialog.hidden = true;
+    dialog.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
+  const openDialog = () => {
+    dialog.hidden = false;
+    dialog.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    if (!messages.children.length) appendMessage('Welcome to Hatsey Kaleb Hotel. I can help with verified rooms, dining, services, local experiences, and availability questions.');
+    input.focus();
+  };
+
+  const setLoading = (loading) => {
+    send.disabled = loading;
+    input.disabled = loading;
+    status.textContent = loading ? 'Concierge is checking the hotel information...' : '';
+    status.classList.toggle('is-error', false);
+    widget.classList.toggle('is-loading', loading);
+  };
+
+  toggle.addEventListener('click', () => (dialog.hidden ? openDialog() : closeDialog()));
+  closeButton.addEventListener('click', closeDialog);
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (!text) {
+      status.textContent = 'Please enter a question.';
+      input.focus();
+      return;
+    }
+    appendMessage(text, 'user');
+    history.push({ role: 'user', content: text });
+    input.value = '';
+    setLoading(true);
+    try {
+      if (!api) throw new Error('Concierge service is unavailable.');
+      const result = await api.chatWithConcierge(text, history);
+      appendMessage(result.reply, 'agent');
+      history.push({ role: 'assistant', content: result.reply });
+    } catch (requestError) {
+      status.textContent = requestError.error || requestError.message || 'The concierge is temporarily unavailable. Please contact the hotel directly.';
+      status.classList.add('is-error');
+    } finally {
+      setLoading(false);
+      input.focus();
+    }
+  });
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      form.requestSubmit();
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !dialog.hidden) closeDialog();
+  });
+})();
+
 // ========== HEADER & NAVIGATION ==========
 (function initializeHeader() {
   document.querySelectorAll('.language-menu').forEach((menu) => menu.remove());
@@ -266,6 +365,18 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   const topbar = document.querySelector('.topbar');
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.getElementById('primary-navigation');
+  document.querySelectorAll('.offering-bar').forEach((bar) => bar.remove());
+  if (nav) {
+    const seenHrefs = new Set();
+    nav.querySelectorAll('a').forEach((link) => {
+      const href = link.getAttribute('href');
+      if (href === 'account.html' || seenHrefs.has(href)) {
+        link.remove();
+        return;
+      }
+      seenHrefs.add(href);
+    });
+  }
   const navLinks = Array.from(nav?.querySelectorAll('a') || []);
   const languageLinks = Array.from(document.querySelectorAll('.language-list a[data-lang]'));
   const languageToggle = document.querySelector('.language-menu button');
@@ -365,6 +476,13 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   function closeMenu() {
     if (!topbar) return;
     topbar.classList.remove('open');
+    if (nav) {
+      nav.style.removeProperty('left');
+      nav.style.removeProperty('right');
+      nav.style.removeProperty('transform');
+      nav.style.removeProperty('opacity');
+      nav.style.removeProperty('visibility');
+    }
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('lock-scroll');
     if (menuToggle) menuToggle.focus();
@@ -458,6 +576,13 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     menuToggle.addEventListener('click', () => {
       const isOpen = topbar.classList.toggle('open');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', String(isOpen));
+      if (nav && window.matchMedia('(max-width: 980px)').matches) {
+        nav.style.setProperty('left', isOpen ? '0' : '100%', 'important');
+        nav.style.setProperty('right', 'auto', 'important');
+        nav.style.setProperty('transform', 'none', 'important');
+        nav.style.setProperty('opacity', isOpen ? '1' : '0', 'important');
+        nav.style.setProperty('visibility', isOpen ? 'visible' : 'hidden', 'important');
+      }
       document.body.classList.toggle('lock-scroll', isOpen);
       if (isOpen) {
       const firstNav = nav?.querySelector('a');
@@ -580,7 +705,7 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
       <label for="auth-email">Email</label>
       <input id="auth-email" name="email" type="email" autocomplete="email" required>
       <label for="auth-password">Password</label>
-      <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="8" required>
+          <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}" title="Use at least 8 characters with an uppercase letter, a lowercase letter, and a number." required>
       <label class="auth-confirm-field" for="auth-confirm-password" hidden>Confirm password</label>
       <input id="auth-confirm-password" name="confirmPassword" type="password" autocomplete="new-password">
       <p class="auth-dialog-error" role="alert" aria-live="assertive"></p>
@@ -590,40 +715,52 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   document.body.appendChild(dialog);
 
   const form = dialog.querySelector('form');
+  if (!form) return;
+
   const title = dialog.querySelector('.auth-dialog-title');
   const registerFields = dialog.querySelector('.auth-register-fields');
   const confirmField = dialog.querySelector('.auth-confirm-field');
-  const password = form.elements.password;
+  const password = form.querySelector('#auth-password');
+  const confirmPassword = form.querySelector('#auth-confirm-password');
   const error = dialog.querySelector('.auth-dialog-error');
   const submit = dialog.querySelector('.auth-submit');
   const switchMode = dialog.querySelector('.auth-switch');
   let registerMode = false;
 
   const renderMode = () => {
-    title.textContent = registerMode ? 'Create your account' : 'Sign in';
-    submit.textContent = registerMode ? 'Create account' : 'Sign in';
-    switchMode.textContent = registerMode ? 'Already have an account?' : 'Create an account';
-    registerFields.hidden = !registerMode;
-    confirmField.hidden = !registerMode;
-    registerFields.querySelectorAll('input').forEach((input) => {
-      input.required = registerMode;
-    });
-    confirmField.querySelector('input').required = registerMode;
-    password.autocomplete = registerMode ? 'new-password' : 'current-password';
-    error.textContent = '';
+    if (title) title.textContent = registerMode ? 'Create your account' : 'Sign in';
+    if (submit) submit.textContent = registerMode ? 'Create account' : 'Sign in';
+    if (switchMode) switchMode.textContent = registerMode ? 'Already have an account?' : 'Create an account';
+    if (registerFields) registerFields.hidden = !registerMode;
+    if (confirmField) confirmField.hidden = !registerMode;
+    if (registerFields) {
+      registerFields.querySelectorAll('input').forEach((input) => {
+        input.required = registerMode;
+      });
+    }
+    if (confirmPassword) {
+      confirmPassword.required = registerMode;
+    }
+    if (password) {
+      password.autocomplete = registerMode ? 'new-password' : 'current-password';
+    }
+    if (error) error.textContent = '';
   };
 
   const open = (mode) => {
     registerMode = mode;
     renderMode();
     dialog.showModal();
-    form.elements.email.focus();
+    const email = form.elements.email;
+    if (email) email.focus();
   };
 
   actions.querySelector('[aria-label="Sign up"]')?.addEventListener('click', () => open(true));
   actions.querySelector('[aria-label="Sign in"]')?.addEventListener('click', () => open(false));
+  document.querySelector('#account-sign-in')?.addEventListener('click', () => open(false));
   const signOut = document.createElement('button');
   signOut.type = 'button';
+  signOut.className = 'auth-sign-out';
   signOut.setAttribute('aria-label', 'Sign out');
   signOut.textContent = 'sign out';
   signOut.hidden = !api.isAuthenticated();
@@ -646,25 +783,33 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     renderMode();
   });
   submit.addEventListener('click', async () => {
-    error.textContent = '';
+    if (error) error.textContent = '';
     if (!form.reportValidity()) return;
-    if (registerMode && password.value !== form.elements.confirmPassword.value) {
-      error.textContent = 'Passwords do not match.';
+    if (registerMode && password && confirmPassword && password.value !== confirmPassword.value) {
+      if (error) error.textContent = 'Passwords do not match.';
       return;
     }
     submit.disabled = true;
     submit.textContent = 'Working...';
     try {
       await api.fetchCsrfToken();
+      const emailValue = form.elements.email?.value.trim() || '';
       if (registerMode) {
-        await api.register(form.elements.email.value.trim(), password.value, form.elements.firstName.value.trim(), form.elements.lastName.value.trim());
+        await api.register(
+          emailValue,
+          password?.value || '',
+          form.elements.firstName?.value.trim() || '',
+          form.elements.lastName?.value.trim() || ''
+        );
       } else {
-        await api.login(form.elements.email.value.trim(), password.value);
+        await api.login(emailValue, password?.value || '');
       }
       dialog.close();
       updateAuthActions();
     } catch (requestError) {
-      error.textContent = requestError.error || requestError.message || 'Unable to complete authentication.';
+      if (error) {
+        error.textContent = requestError.error || requestError.message || 'Unable to complete authentication.';
+      }
     } finally {
       submit.disabled = false;
       submit.textContent = registerMode ? 'Create account' : 'Sign in';
@@ -1025,6 +1170,54 @@ if (galleryFilterButtons.length && galleryItems.length) {
     });
   });
 }
+
+const faqAccordions = Array.from(document.querySelectorAll('#faq-content details'));
+faqAccordions.forEach((details) => {
+  const summary = details.querySelector('summary');
+  const answer = details.querySelector('p');
+  if (!summary || !answer) return;
+
+  details.dataset.faqEnhanced = 'true';
+  summary.setAttribute('aria-expanded', String(details.open));
+
+  const finishClose = () => {
+    details.open = false;
+    details.classList.remove('is-closing');
+    answer.style.maxHeight = '';
+    answer.style.opacity = '';
+    answer.style.transform = '';
+  };
+
+  const toggleAnswer = (event) => {
+    event.preventDefault();
+    if (details.classList.contains('is-closing')) return;
+
+    if (details.open) {
+      answer.style.maxHeight = `${answer.scrollHeight}px`;
+      answer.offsetHeight;
+      details.classList.add('is-closing');
+      summary.setAttribute('aria-expanded', 'false');
+      answer.style.maxHeight = '0px';
+      answer.style.opacity = '0';
+      answer.style.transform = 'translateY(-8px)';
+      answer.addEventListener('transitionend', finishClose, { once: true });
+      return;
+    }
+
+    details.open = true;
+    summary.setAttribute('aria-expanded', 'true');
+    answer.style.maxHeight = '0px';
+    answer.style.opacity = '0';
+    answer.style.transform = 'translateY(-8px)';
+    requestAnimationFrame(() => {
+      answer.style.maxHeight = `${answer.scrollHeight}px`;
+      answer.style.opacity = '1';
+      answer.style.transform = 'translateY(0)';
+    });
+  };
+
+  summary.addEventListener('click', toggleAnswer);
+});
 
 const printButtons = Array.from(document.querySelectorAll('[data-print]'));
 printButtons.forEach(button => {

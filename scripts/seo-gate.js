@@ -7,7 +7,7 @@ const root = process.cwd();
 const robotsPath = path.join(root, 'robots.txt');
 const sitemapPath = path.join(root, 'sitemap.xml');
 const productionOrigin = 'https://hatseykalebhotel.com';
-const ignoredPages = new Set(['analytics-dashboard.html']);
+const ignoredPages = new Set(['analytics-dashboard.html', '404.html', 'account.html']);
 
 function fail(message) {
   console.error(`❌ SEO gate failed: ${message}`);

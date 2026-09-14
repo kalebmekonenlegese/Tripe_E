@@ -8,7 +8,13 @@ const validatePhoneNumber = (phone) => {
   return typeof phone === 'string' && re.test(phone) && phone.replace(/\D/g, '').length >= 10;
 };
 
-const validatePassword = (password) => typeof password === 'string' && password.length >= 8;
+const validatePassword = (password) => (
+  typeof password === 'string'
+  && password.length >= 8
+  && /[a-z]/.test(password)
+  && /[A-Z]/.test(password)
+  && /\d/.test(password)
+);
 
 const validateEnum = (value, allowed = []) => typeof value === 'string' && allowed.includes(value);
 

@@ -44,14 +44,10 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <!-- HEADER -->
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <picture>
-  <source type="image/avif" srcset="/images/rooms-hero.svg 320w" sizes="56px">
-  <source type="image/webp" srcset="/images/rooms-hero.svg 320w" sizes="56px">
-  <img src="/images/rooms.svg" class="image-skeleton" alt="Hatsey Kaleb Hotel logo" width="56" height="56" loading="lazy" decoding="async">
-</picture>
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -62,33 +58,23 @@
         <a href="gallery.html">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">Amharic</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">Tigrinya</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -104,12 +90,12 @@
     </nav>
 
     <!-- PAGE HERO -->
-    <section class="hero" style="min-height: 50vh;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.5), transparent); z-index: 1;"></div>
+    <section class="hero inline-style-001">
+      <div class="inline-style-004"></div>
       <picture>
   <source type="image/avif" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
-  <img src="/images/rooms.svg" class="image-skeleton" alt="Hotel rooms" width="1600" height="900" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+  <img src="/images/rooms.svg" class="image-skeleton inline-style-003" alt="Hotel rooms" width="1600" height="900" loading="lazy" decoding="async">
 </picture>
       <div class="hero-copy">
         <h1 class="title">Rooms & Suites</h1>
@@ -201,7 +187,7 @@
           <picture>
   <source type="image/avif" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
-  <img src="/images/rooms.svg" class="image-skeleton" alt="Deluxe hotel room" loading="lazy" decoding="async">
+  <img src="/assets/images/room-03.jpg" class="image-skeleton" alt="Deluxe hotel room" loading="lazy" decoding="async">
 </picture>
           <div class="room-card-body">
             <h3>Deluxe Room</h3>
@@ -220,7 +206,7 @@
           <picture>
   <source type="image/avif" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
-  <img src="/images/rooms.svg" class="image-skeleton" alt="Executive suite room" loading="lazy" decoding="async">
+  <img src="/assets/images/room-04.jpg" class="image-skeleton" alt="Executive suite room" loading="lazy" decoding="async">
 </picture>
           <div class="room-card-body">
             <h3>Executive Suite</h3>
@@ -239,7 +225,7 @@
           <picture>
   <source type="image/avif" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/rooms-hero.svg 320w, /images/rooms-hero.svg 480w, /images/rooms-hero.svg 640w, /images/rooms-hero.svg 900w, /images/rooms-hero.svg 1200w, /images/rooms-hero.svg 1600w" sizes="100vw">
-  <img src="/images/rooms.svg" class="image-skeleton" alt="Family room" loading="lazy" decoding="async">
+  <img src="/assets/images/room-02.jpg" class="image-skeleton" alt="Family room" loading="lazy" decoding="async">
 </picture>
           <div class="room-card-body">
             <h3>Family Room</h3>
@@ -278,13 +264,13 @@
         </div>
         <div class="split-panel">
           <h3>Compare room types</h3>
-          <div style="overflow-x:auto;">
-            <table style="width:100%;border-collapse:collapse;text-align:left;">
-              <thead><tr><th style="padding:10px 0;color:var(--accent);">Feature</th><th style="padding:10px 0;color:#fff;">Standard</th><th style="padding:10px 0;color:#fff;">Deluxe</th></tr></thead>
+          <div class="inline-style-066">
+            <table class="inline-style-067">
+              <thead><tr><th class="inline-style-068">Feature</th><th class="inline-style-069">Standard</th><th class="inline-style-069">Deluxe</th></tr></thead>
               <tbody>
-                <tr><td style="padding:8px 0;color:var(--muted);">Size</td><td>25 m²</td><td>35 m²</td></tr>
-                <tr><td style="padding:8px 0;color:var(--muted);">Guests</td><td>2</td><td>2</td></tr>
-                <tr><td style="padding:8px 0;color:var(--muted);">View</td><td>City</td><td>Garden</td></tr>
+                <tr><td class="inline-style-070">Size</td><td>25 m²</td><td>35 m²</td></tr>
+                <tr><td class="inline-style-070">Guests</td><td>2</td><td>2</td></tr>
+                <tr><td class="inline-style-070">View</td><td>City</td><td>Garden</td></tr>
               </tbody>
             </table>
           </div>
@@ -309,15 +295,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -327,10 +313,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -343,7 +330,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -353,13 +340,20 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div>&copy; 2025 Hatsey Kaleb Hotel. All rights reserved.</div>
-      <div><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="cookie-policy.html">Cookies</a></div>
+      <div>© 2025 Hatsey Kaleb Hotel. All rights reserved.</div>
+      <div><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="cookie-policy.html">Cookies</a></div>
       <div class="social-links">
         <a href="https://facebook.com/hatseykalebhotel" target="_blank" rel="noopener">facebook</a>
         <a href="https://instagram.com/hatseykalebhotel" target="_blank" rel="noopener">instagram</a>
@@ -367,89 +361,7 @@
       </div>
     </div>
   </footer>
-<!-- AI CONCIERGE -->
-  <div id="ai-concierge" aria-hidden="false">
-    <button id="concierge-toggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="concierge-dialog" aria-label="Open AI Concierge">&#128172;</button>
-    <div id="concierge-dialog" role="dialog" aria-modal="false" aria-label="Hotel Concierge Assistant" hidden>
-      <div class="concierge-header" role="region" aria-label="Concierge header">
-        <div class="concierge-title">
-          <strong>Hatsey Concierge</strong>
-          <small>How can I help?</small>
-        </div>
-        <div class="concierge-controls">
-          <select id="concierge-lang" aria-label="Choose language">
-            <option value="en">English</option>
-            <option value="am">Amharic</option>
-            <option value="ti">Tigrinya</option>
-          </select>
-          <button id="concierge-close" type="button" aria-label="Close concierge">&#10005;</button>
-        </div>
-      </div>
-      <div class="concierge-body">
-        <div id="concierge-messages" class="concierge-messages" role="log" aria-live="polite"></div>
-        <form id="concierge-form" class="concierge-form" action="#" onsubmit="return false;">
-          <input id="concierge-input" type="text" placeholder="Ask about rooms..." aria-label="Ask concierge">
-          <button id="concierge-send" type="button" aria-label="Send">Send</button>
-        </form>
-      </div>
-      <div class="concierge-footer">
-        <small>AI Concierge (UI only)</small>
-      </div>
-    </div>
-  </div>
-
-  <!-- SCRIPTS -->
-  
-  <script>
-    // Concierge initialization (simplified)
-    (function initConcierge() {
-      const toggle = document.getElementById('concierge-toggle');
-      const dialog = document.getElementById('concierge-dialog');
-      const closeBtn = document.getElementById('concierge-close');
-      const sendBtn = document.getElementById('concierge-send');
-      const input = document.getElementById('concierge-input');
-      const messages = document.getElementById('concierge-messages');
-
-      function appendMessage(text, who='agent') {
-        const wrap = document.createElement('div');
-        wrap.className = 'concierge-msg ' + (who === 'user' ? 'user' : 'agent');
-        const bubble = document.createElement('div');
-        bubble.className = 'concierge-bubble ' + (who === 'user' ? 'user' : 'agent');
-        bubble.textContent = text;
-        wrap.appendChild(bubble);
-        messages.appendChild(wrap);
-        messages.scrollTop = messages.scrollHeight;
-      }
-
-      function openDialog() {
-        dialog.hidden = false;
-        dialog.classList.add('open');
-        toggle.setAttribute('aria-expanded', 'true');
-        input.focus();
-        appendMessage('Welcome! Ask me about our rooms.');
-      }
-
-      function closeDialog() {
-        dialog.hidden = true;
-        dialog.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.focus();
-      }
-
-      toggle.addEventListener('click', () => dialog.hidden ? openDialog() : closeDialog());
-      closeBtn.addEventListener('click', closeDialog);
-      sendBtn.addEventListener('click', () => {
-        const text = input.value.trim();
-        if (!text) return;
-        appendMessage(text, 'user');
-        setTimeout(() => {
-          appendMessage(text.includes('deluxe') ? 'The Deluxe Room is spacious and offers great views.' : 'I can help with room details. Which room are you interested in?');
-        }, 400);
-        input.value = '';
-      });
-    })();
-  </script>
-  <script type="module" src="assets/config/app-config.js"></script>
+<script type="module" src="assets/config/app-config.js"></script>
   <script type="module" src="assets/js/room-pricing.js"></script>
   <script type="module" defer src="assets/js/app.js"></script>
 </body>

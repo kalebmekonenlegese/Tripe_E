@@ -14,8 +14,8 @@ test.describe('Accessibility and device flow checks', () => {
 
     await expect(page.locator('main, [role=main]')).toHaveCount(1);
     await expect(page.getByRole('link', { name: /skip to main content/i })).toBeVisible();
-    await expect(page.getByRole('button', { name: /sign up/i })).toBeVisible();
-    await expect(page.getByRole('button', { name: /sign in/i })).toBeVisible();
+    await expect(page.locator('.top-actions a[href="booking.html"]')).toBeVisible();
+    await expect(page.locator('.top-actions a[href="account.html"]')).toBeVisible();
 
     await expect(page.getByLabel(/your name/i)).toBeVisible();
     await expect(page.getByLabel(/email address/i)).toBeVisible();

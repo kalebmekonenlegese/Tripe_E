@@ -4,6 +4,17 @@ import '../assets/config/app-config.js';
 import '../assets/js/api-client.js';
 import '../assets/js/api-integration.js';
 
+const initializeServicesHero = () => {
+  const hero = document.querySelector('.services-hero');
+  if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  hero.classList.add('services-hero-ready');
+};
+
+initializeServicesHero();
+
 const revealPageFallback = () => {
   const body = document.body;
   if (!body) {

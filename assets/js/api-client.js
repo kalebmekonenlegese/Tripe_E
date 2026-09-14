@@ -150,6 +150,10 @@ class HotelAPIClient {
     localStorage.removeItem('hotel_user_id');
   }
 
+  async chatWithConcierge(message, history = [], bookingContext = {}) {
+    return this.request('POST', '/api/concierge/chat', { message, history, bookingContext });
+  }
+
   setAuthToken(token) {
     this.token = token;
     if (token) {

@@ -3,16 +3,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const PAGES_TO_CHECK = [
-  'index.html',
-  'about.html',
-  'rooms.html',
-  'booking.html',
-  'ai-assistant.html',
-  'contact.html',
-  'reviews.html',
-  'gallery.html'
-];
+const PAGES_TO_CHECK = fs
+  .readdirSync(path.join(__dirname, '..'))
+  .filter((file) => file.endsWith('.html'))
+  .sort();
 
 console.log('🔍 AUDITING IMAGES FOR ALT TEXT\n');
 

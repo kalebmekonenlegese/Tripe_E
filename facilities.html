@@ -42,10 +42,10 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <img loading="lazy" decoding="async" width="56" height="56" src="/images/logo.svg" alt="Hatsey Kaleb Hotel logo">
+        <img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Hatsey Kaleb Hotel logo">
         <span class="logo-title">Hatsey Kaleb Hotel</span>
       </div>
       <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
@@ -56,33 +56,23 @@
         <a href="gallery.html">gallery</a>
         <a href="about.html">about us</a>
         <a href="contact.html">contact us</a>
+        <a href="services.html">services</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation">
         <span class="hamburger" aria-hidden="true"></span>
         <span>menu</span>
       </button>
       <div class="language-menu">
-        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">?</span></button>
+        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button>
         <div id="language-list" class="language-list" role="menu" aria-label="Language selection">
-          <a href="?lang=en" data-lang="en" role="menuitem">???? English</a>
-          <a href="?lang=am" data-lang="am" role="menuitem">???? ????</a>
-          <a href="?lang=ti" data-lang="ti" role="menuitem">???? ????</a>
+          <a href="?lang=en" data-lang="en" role="menuitem">🇬🇧 English</a>
+          <a href="?lang=am" data-lang="am" role="menuitem">🇪🇹 አማርኛ</a>
+          <a href="?lang=ti" data-lang="ti" role="menuitem">🇪🇹 ትግርኛ</a>
         </div>
       </div>
-      <div class="top-actions">
-        <button type="button" aria-label="Sign up">sign up</button>
-        <button type="button" aria-label="Sign in">sign in</button>
-      </div>
-    </div>
-    <div class="offering-bar">
-      <div class="offer-links">
-        <a href="rooms.html">rooms</a>
-        <a href="restaurant.html">dining</a>
-        <a href="events.html">events</a>
-        <a href="gallery.html">gallery</a>
-        <a href="facilities.html">facilities</a>
-        <a href="offers.html">offers</a>
-        <a href="faq.html">faq</a>
+      <div class="top-actions" aria-label="Booking actions">
+        <a href="booking.html">book now</a>
+        <a href="account.html">my bookings</a>
       </div>
     </div>
   </header>
@@ -93,12 +83,12 @@
       <a href="index.html">Home</a><span>/</span><span>Facilities</span>
     </nav>
 
-    <section class="hero" style="min-height: 50vh;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)); z-index: 1;"></div>
+    <section class="hero inline-style-001">
+      <div class="inline-style-053"></div>
       <picture>
   <source type="image/avif" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w, /images/facilities-hero.svg 1200w, /images/facilities-hero.svg 1600w" sizes="100vw">
   <source type="image/webp" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w, /images/facilities-hero.svg 1200w, /images/facilities-hero.svg 1600w" sizes="100vw">
-  <img src="/assets/images/gym.png" class="image-skeleton" alt="Hotel facilities" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+  <img src="/assets/images/gym.webp" class="image-skeleton inline-style-003" alt="Hotel facilities" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
 </picture>
       <div class="hero-copy">
         <h1 class="title">Premium Facilities</h1>
@@ -112,7 +102,7 @@
           <picture>
   <source type="image/avif" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
   <source type="image/webp" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
-  <img src="/images/facilities.svg" class="image-skeleton" alt="Restaurant" width="900" height="600" loading="lazy" decoding="async">
+  <img src="/assets/images/fine-dining-restaurant.jpg" class="image-skeleton" alt="Restaurant" width="900" height="600" loading="lazy" decoding="async">
 </picture>
           <div class="service-card-body"><h3>Fine Dining Restaurant</h3><p>Authentic Ethiopian cuisine and international favorites in an elegant setting. Open for breakfast, lunch, and dinner with room service available 24/7.</p><a href="restaurant.html" class="button-outline">explore</a></div>
         </article>
@@ -120,7 +110,7 @@
           <picture>
   <source type="image/avif" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
   <source type="image/webp" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
-  <img src="/images/facilities.svg" class="image-skeleton" alt="Bar" width="900" height="600" loading="lazy" decoding="async">
+  <img src="/assets/images/lounge-and-bar.jpg" class="image-skeleton" alt="Bar" width="900" height="600" loading="lazy" decoding="async">
 </picture>
           <div class="service-card-body"><h3>Lounge & Bar</h3><p>Premium beverages, cocktails, and light snacks. Relax in our comfortable lounge with live entertainment on select evenings.</p><a href="contact.html" class="button-outline">inquire</a></div>
         </article>
@@ -128,7 +118,7 @@
           <picture>
   <source type="image/avif" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
   <source type="image/webp" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
-  <img src="/images/facilities.svg" class="image-skeleton" alt="Café" width="900" height="600" loading="lazy" decoding="async">
+  <img src="/assets/images/cafe-and-pastry-shop.webp" class="image-skeleton" alt="Café" width="900" height="600" loading="lazy" decoding="async">
 </picture>
           <div class="service-card-body"><h3>Café & Pastry Shop</h3><p>Fresh pastries, coffee, and light meals throughout the day. Perfect for quick bites and casual meetings.</p><a href="contact.html" class="button-outline">more</a></div>
         </article>
@@ -141,7 +131,7 @@
           <picture>
   <source type="image/avif" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
   <source type="image/webp" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
-  <img src="/images/facilities.svg" class="image-skeleton" alt="Conference" width="900" height="600" loading="lazy" decoding="async">
+  <img src="/assets/images/conference-center.jpg" class="image-skeleton" alt="Conference" width="900" height="600" loading="lazy" decoding="async">
 </picture>
           <div class="service-card-body"><h3>Conference Centers</h3><p>State-of-the-art meeting facilities with AV equipment, high-speed internet, and flexible seating arrangements. Accommodates 20-300 guests.</p><a href="conferences.html" class="button-outline">details</a></div>
         </article>
@@ -149,15 +139,15 @@
           <picture>
   <source type="image/avif" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
   <source type="image/webp" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
-  <img src="/images/facilities.svg" class="image-skeleton" alt="Business center" width="900" height="600" loading="lazy" decoding="async">
+  <img src="/assets/images/business-center.jpg" class="image-skeleton" alt="Business center" width="900" height="600" loading="lazy" decoding="async">
 </picture>
-          <div class="service-card-body"><h3>Business Center</h3><p>Full office services including printing, copying, scanning, and secure internet. Available 24/7 for our guests.</p><a href="contact.html" class="button-outline">reserve</a></div>
+          <div class="service-card-body"><h3>Business Center</h3><p>Full office services including printing, copying, scanning, and secure internet. Available 24/7 for our guests.</p><a href="business-center.html" class="button-outline">details</a></div>
         </article>
         <article class="service-card">
           <picture>
   <source type="image/avif" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
   <source type="image/webp" srcset="/images/facilities-hero.svg 320w, /images/facilities-hero.svg 480w, /images/facilities-hero.svg 640w, /images/facilities-hero.svg 900w" sizes="(max-width: 900px) 100vw, 900px">
-  <img src="/images/facilities.svg" class="image-skeleton" alt="WiFi" width="900" height="600" loading="lazy" decoding="async">
+  <img src="/assets/images/high-speed-internet.jpg" class="image-skeleton" alt="WiFi" width="900" height="600" loading="lazy" decoding="async">
 </picture>
           <div class="service-card-body"><h3>High-Speed Internet</h3><p>Reliable high-speed WiFi throughout the hotel. Dedicated bandwidth for conferences and group events.</p><a href="contact.html" class="button-outline">info</a></div>
         </article>
@@ -167,16 +157,16 @@
     <section><h2 class="section-heading">Wellness & Recreation</h2>
       <div class="benefits-grid">
         <div class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin: 0 0 8px; color: #fff;">Fitness Center</h3><p>Modern gym equipment, personal training, and fitness classes. Complimentary for all guests.</p></div>
+          <img src="/assets/images/gym.webp" class="facility-image" alt="Hotel fitness center" loading="lazy" />
+          <div><h3 class="inline-style-052">Fitness Center</h3><p>Modern gym equipment, personal training, and fitness classes. Complimentary for all guests.</p><a href="fitness-center.html" class="button-outline">details</a></div>
         </div>
         <div class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin: 0 0 8px; color: #fff;">Spa Services</h3><p>Professional massage, facials, and wellness treatments in our relaxation sanctuary.</p></div>
+          <img src="/assets/images/spa-01.webp" class="facility-image" alt="Hotel spa treatment area" loading="lazy" />
+          <div><h3 class="inline-style-052">Spa Services</h3><p>Professional massage, facials, and wellness treatments in our relaxation sanctuary.</p></div>
         </div>
         <div class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin: 0 0 8px; color: #fff;">Yoga & Meditation</h3><p>Daily yoga classes and meditation sessions. Enhance your wellness during your stay.</p></div>
+          <img src="/assets/images/Swimming-01.avif" class="facility-image" alt="Hotel swimming pool" loading="lazy" />
+          <div><h3 class="inline-style-052">Swimming Pool</h3><p>Take a refreshing swim or unwind beside the water during your stay.</p></div>
         </div>
       </div>
     </section>
@@ -184,24 +174,24 @@
     <section><h2 class="section-heading">Guest Services</h2>
       <div class="benefits-grid">
         <div class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin: 0 0 8px; color: #fff;">24/7 Concierge</h3><p>Expert local knowledge and assistance with reservations, arrangements, and recommendations.</p></div>
+          <img src="/assets/images/concierge.jpg" class="facility-image" alt="24/7 concierge service" loading="lazy" decoding="async">
+          <div><h3 class="inline-style-052">24/7 Concierge</h3><p>Expert local knowledge and assistance with reservations, arrangements, and recommendations.</p><a href="concierge-services.html" class="button-outline">details</a></div>
         </div>
         <div class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin: 0 0 8px; color: #fff;">Transportation</h3><p>Airport transfers, local tours, and vehicle rental services arranged on request.</p></div>
+          <img src="/assets/images/transportation.jpg" class="facility-image" alt="Hotel transportation service" loading="lazy" decoding="async">
+          <div><h3 class="inline-style-052">Transportation</h3><p>Airport transfers, local tours, and vehicle rental services arranged on request.</p></div>
         </div>
         <div class="benefit-card">
-          <img src="/images/lordicon.png" class="lord-icon" aria-hidden="true" />
-          <div><h3 style="margin: 0 0 8px; color: #fff;">Security & Safety</h3><p>24-hour security, safe deposit boxes, and comprehensive CCTV surveillance.</p></div>
+          <img src="/assets/images/security-and-safety.jpg" class="facility-image" alt="Hotel security and safety" loading="lazy" decoding="async">
+          <div><h3 class="inline-style-052">Security & Safety</h3><p>24-hour security, safe deposit boxes, and comprehensive CCTV surveillance.</p><a href="safety-security.html" class="button-outline">details</a></div>
         </div>
       </div>
     </section>
 
-    <section style="text-align: center; padding: 60px 0;">
+    <section class="inline-style-005">
       <h2 class="section-heading">Experience Our Hospitality</h2>
-      <p class="section-intro" style="margin-bottom: 32px;">Discover why guests choose Hatsey Kaleb Hotel for their stay.</p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <p class="section-intro inline-style-013">Discover why guests choose Hatsey Kaleb Hotel for their stay.</p>
+      <div class="inline-style-014">
         <a href="booking.html" class="buttoncall">Book Now</a>
         <a href="contact.html" class="button-outline">Contact Us</a>
       </div>
@@ -212,15 +202,15 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="50%" y="70%" text-anchor="middle" font-size="62" font-family="Arial" font-weight="700" fill="#111">H</text></svg>
+          <img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Hatsey Kaleb Hotel logo" loading="lazy">
           <div>
-            <strong style="color:var(--text);">Hatsey Kaleb Hotel</strong>
+            <strong>Hatsey Kaleb Hotel</strong>
             <p>Warm hospitality in Tigray — comfort, events, and dining.</p>
           </div>
         </div>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
@@ -230,10 +220,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="booking.html">Book Now</a></li>
+          <li><a href="account.html">My Bookings</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">Explore</h3>
+        <h3>Explore</h3>
         <ul>
           <li><a href="ai-assistant.html">AI Concierge</a></li>
           <li><a href="virtual-tour.html">Virtual Tour</a></li>
@@ -246,7 +237,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h3 style="color:var(--text); margin-top:0;">More</h3>
+        <h3>More</h3>
         <ul>
           <li><a href="standard-room.html">Standard Room</a></li>
           <li><a href="deluxe-room.html">Deluxe Room</a></li>
@@ -256,6 +247,13 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="services.html">Hotel Services</a></li>
+          <li><a href="cancellation.html">Cancellation Policy</a></li>
+          <li><a href="fitness-center.html">Fitness Center</a></li>
+          <li><a href="laundry-service.html">Laundry Service</a></li>
+          <li><a href="business-center.html">Business Center</a></li>
+          <li><a href="safety-security.html">Safety & Security</a></li>
+          <li><a href="concierge-services.html">Concierge Services</a></li>
         </ul>
       </div>
     </div>

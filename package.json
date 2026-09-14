@@ -14,6 +14,7 @@
     "build": "vite build",
     "preview": "vite preview --port 5000",
     "optimize": "node build-scripts/optimize.js",
+    "optimize:images": "node build-scripts/optimize-images.mjs",
     "test": "playwright test",
     "test:backend": "jest --runInBand",
     "email:test": "node scripts/test-email.js",
