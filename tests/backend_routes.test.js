@@ -50,6 +50,10 @@ jest.mock('../utils/db', () => {
 jest.mock('../config', () => {
   return {
     environment: 'test',
+    chapaSecretKey: 'chapa-test-secret',
+    chapaApiBaseUrl: 'https://api.chapa.co/v1',
+    chapaCallbackUrl: 'http://localhost:3000/api/payments/chapa/callback',
+    chapaReturnUrl: 'http://localhost:3000/booking/success',
     stripeClient: {
       paymentIntents: {
         create: jest.fn(),
