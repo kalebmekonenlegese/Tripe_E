@@ -7,7 +7,7 @@ export const HOTEL_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Hotel',
   '@id': 'https://hatseykalebhotel.com',
-  name: 'Hatsey Kaleb Hotel',
+  name: 'Triple E Hotel & Spa',
   description:
     'Luxury hotel offering comfortable rooms, fine dining, event spaces, and warm hospitality in Tigray, Ethiopia.',
   image: ['https://hatseykalebhotel.com/images/hotel-hero.svg'],
@@ -26,7 +26,7 @@ export const HOTEL_SCHEMA = {
     '@type': 'GeoCoordinates',
     latitude: 13.6259237,
     longitude: 38.9940929,
-    name: 'Hatsey Kaleb Hotel Location'
+    name: 'Triple E Hotel & Spa Location'
   },
   sameAs: [
     'https://www.facebook.com/hatseykalebhotel',
@@ -136,7 +136,7 @@ export const ROOM_SCHEMA = (room) => ({
 export const RESTAURANT_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
-  name: 'Hatsey Kaleb Hotel Restaurant',
+  name: 'Triple E Hotel & Spa Restaurant',
   description: 'Fine dining restaurant offering Ethiopian and international cuisine.',
   url: 'https://hatseykalebhotel.com/restaurant.html',
   image: 'https://hatseykalebhotel.com/images/restaurant-hero.svg',
@@ -193,7 +193,7 @@ export const EVENT_SCHEMA = (event) => ({
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
     '@type': 'Place',
-    name: 'Hatsey Kaleb Hotel',
+    name: 'Triple E Hotel & Spa',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Abiy Adi',
@@ -204,7 +204,7 @@ export const EVENT_SCHEMA = (event) => ({
   image: event.image,
   organizer: {
     '@type': 'Organization',
-    name: 'Hatsey Kaleb Hotel',
+    name: 'Triple E Hotel & Spa',
     url: 'https://hatseykalebhotel.com'
   },
   offers: {
@@ -223,7 +223,7 @@ export const REVIEW_SCHEMA = (review) => ({
   '@id': `https://hatseykalebhotel.com/reviews#review-${review.id}`,
   itemReviewed: {
     '@type': 'Hotel',
-    name: 'Hatsey Kaleb Hotel',
+    name: 'Triple E Hotel & Spa',
     url: 'https://hatseykalebhotel.com'
   },
   reviewRating: {
@@ -240,14 +240,14 @@ export const REVIEW_SCHEMA = (review) => ({
   datePublished: review.datePublished,
   publisher: {
     '@type': 'Organization',
-    name: 'Hatsey Kaleb Hotel'
+    name: 'Triple E Hotel & Spa'
   }
 });
 
 export const LOCAL_BUSINESS_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Hatsey Kaleb Hotel',
+  name: 'Triple E Hotel & Spa',
   description:
     'Luxury hotel with comfortable rooms, fine dining, spa, and event spaces in Tigray, Ethiopia.',
   image: ['https://hatseykalebhotel.com/images/hotel-hero.svg'],
@@ -291,14 +291,14 @@ export const LOCAL_BUSINESS_SCHEMA = {
 export const ORGANIZATION_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Hatsey Kaleb Hotel',
+  name: 'Triple E Hotel & Spa',
   url: 'https://hatseykalebhotel.com',
   logo: 'https://hatseykalebhotel.com/assets/images/logo-01.jpg',
   description: 'Premium hotel providing luxury accommodation and services in Tigray, Ethiopia.',
   foundingDate: '2020',
   founder: {
     '@type': 'Person',
-    name: 'Hatsey Kaleb Hotel Management'
+    name: 'Triple E Hotel & Spa Management'
   },
   contactPoint: {
     '@type': 'ContactPoint',
@@ -333,8 +333,8 @@ export const META_TAGS = {
   description:
     'Luxury hotel in Tigray, Ethiopia offering comfortable rooms, fine dining, spa services, and event spaces.',
   keywords:
-    'hotel tigray, accommodation tigray, luxury hotel ethiopia, hatsey kaleb hotel, abiy adi hotel',
-  author: 'Hatsey Kaleb Hotel',
+    'hotel tigray, accommodation tigray, luxury hotel ethiopia, triple e hotel & spa, abiy adi hotel',
+  author: 'Triple E Hotel & Spa',
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   'format-detection': 'telephone=no',
   'app-mobile-web-app-capable': 'yes',

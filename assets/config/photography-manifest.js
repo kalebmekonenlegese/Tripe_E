@@ -5,9 +5,9 @@ export const photographyManifest = {
     orientation: 'Landscape',
     ratio: '16:9',
     minimumResolution: '2400 x 1350',
-    subject: 'Hatsey Kaleb Hotel exterior at golden hour',
+    subject: 'Triple E Hotel & Spa exterior at golden hour',
     composition: 'Show the full facade in its Tigrayan setting with warm directional light and clear architectural lines.',
-    alt: 'Hatsey Kaleb Hotel exterior in Tigray at golden hour.'
+    alt: 'Triple E Hotel & Spa exterior in Tigray at golden hour.'
   },
   'lobby-reception': {
     path: '/assets/images/hotel/lobby-reception.webp',
@@ -16,7 +16,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1600',
     subject: 'Reception and lobby welcome',
     composition: 'Include reception detail, local materials, crafted objects, and a natural human welcome without staging an empty room.',
-    alt: 'Warm reception lobby at Hatsey Kaleb Hotel.'
+    alt: 'Warm reception lobby at Triple E Hotel & Spa.'
   },
   'deluxe-room': {
     path: '/assets/images/rooms/deluxe-room-01.webp',
@@ -25,7 +25,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Deluxe guest room',
     composition: 'Center the bed while retaining the window, local textures, and depth through the room.',
-    alt: 'Deluxe guest room at Hatsey Kaleb Hotel.'
+    alt: 'Deluxe guest room at Triple E Hotel & Spa.'
   },
   'standard-room': {
     path: '/assets/images/rooms/standard-room-01.webp',
@@ -34,7 +34,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Standard guest room',
     composition: 'Show practical comfort, daylight, and craftsmanship with a clean architectural horizon.',
-    alt: 'Standard guest room at Hatsey Kaleb Hotel.'
+    alt: 'Standard guest room at Triple E Hotel & Spa.'
   },
   'executive-suite': {
     path: '/assets/images/rooms/executive-suite-01.webp',
@@ -43,7 +43,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Executive suite living and sleeping areas',
     composition: 'Use a wide angle from the living area that preserves natural proportions and separates the suite zones.',
-    alt: 'Executive suite living area at Hatsey Kaleb Hotel.'
+    alt: 'Executive suite living area at Triple E Hotel & Spa.'
   },
   'bathroom': {
     path: '/assets/images/rooms/bathroom-01.webp',
@@ -52,7 +52,7 @@ export const photographyManifest = {
     minimumResolution: '2000 x 1500',
     subject: 'Guest bathroom details',
     composition: 'Highlight stone, fixtures, towels, and natural light without excessive wide-angle distortion.',
-    alt: 'Guest bathroom with crafted finishes at Hatsey Kaleb Hotel.'
+    alt: 'Guest bathroom with crafted finishes at Triple E Hotel & Spa.'
   },
   'restaurant': {
     path: '/assets/images/restaurant/dining-room.webp',
@@ -61,7 +61,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Restaurant atmosphere',
     composition: 'Show depth, table settings, local materials, and a sense of evening hospitality.',
-    alt: 'Restaurant dining room at Hatsey Kaleb Hotel.'
+    alt: 'Restaurant dining room at Triple E Hotel & Spa.'
   },
   'breakfast-buffet': {
     path: '/assets/images/restaurant/breakfast-buffet.webp',
@@ -70,7 +70,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1600',
     subject: 'Breakfast buffet and morning service',
     composition: 'Photograph a generous but orderly spread with staff movement and clear food detail.',
-    alt: 'Breakfast buffet at Hatsey Kaleb Hotel.'
+    alt: 'Breakfast buffet at Triple E Hotel & Spa.'
   },
   'coffee-ceremony': {
     path: '/assets/images/experiences/coffee-ceremony.webp',
@@ -79,7 +79,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1600',
     subject: 'Traditional Ethiopian coffee ceremony',
     composition: 'Prioritize hands, jebena, incense, cups, and the social circle; ask participants for consent.',
-    alt: 'Traditional Ethiopian coffee ceremony at Hatsey Kaleb Hotel.'
+    alt: 'Traditional Ethiopian coffee ceremony at Triple E Hotel & Spa.'
   },
   'tigrayan-cuisine': {
     path: '/assets/images/restaurant/tigrayan-cuisine.webp',
@@ -88,7 +88,7 @@ export const photographyManifest = {
     minimumResolution: '2000 x 1500',
     subject: 'Traditional Tigrayan cuisine',
     composition: 'Use natural light, visible texture, and a shared-table context rather than isolated plated food only.',
-    alt: 'Traditional Tigrayan cuisine served at Hatsey Kaleb Hotel.'
+    alt: 'Traditional Tigrayan cuisine served at Triple E Hotel & Spa.'
   },
   'spa-treatment': {
     path: '/assets/images/spa/spa-treatment.webp',
@@ -97,7 +97,7 @@ export const photographyManifest = {
     minimumResolution: '2000 x 1500',
     subject: 'Spa and wellness treatment',
     composition: 'Keep the frame calm and respectful, showing materials, hands, and atmosphere without identifying guests.',
-    alt: 'Spa wellness treatment at Hatsey Kaleb Hotel.'
+    alt: 'Spa wellness treatment at Triple E Hotel & Spa.'
   },
   'fitness-center': {
     path: '/assets/images/spa/fitness-center.webp',
@@ -106,7 +106,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Fitness center',
     composition: 'Show equipment, daylight, ventilation, and enough floor space to communicate usability.',
-    alt: 'Fitness center at Hatsey Kaleb Hotel.'
+    alt: 'Fitness center at Triple E Hotel & Spa.'
   },
   'conference-hall': {
     path: '/assets/images/events/conference-hall.webp',
@@ -115,7 +115,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Conference hall ready for an event',
     composition: 'Capture room scale, seating flexibility, presentation technology, and clean sightlines.',
-    alt: 'Conference hall prepared for an event at Hatsey Kaleb Hotel.'
+    alt: 'Conference hall prepared for an event at Triple E Hotel & Spa.'
   },
   'wedding-venue': {
     path: '/assets/images/events/wedding-venue.webp',
@@ -124,7 +124,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Wedding venue and celebration details',
     composition: 'Combine a wide venue frame with intimate decor details and genuine human celebration.',
-    alt: 'Wedding venue prepared at Hatsey Kaleb Hotel.'
+    alt: 'Wedding venue prepared at Triple E Hotel & Spa.'
   },
   'airport-transfer': {
     path: '/assets/images/services/airport-transfer.webp',
@@ -142,7 +142,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1350',
     subject: 'Parking and electric vehicle charging',
     composition: 'Make access, lighting, signage, and charging equipment legible in one clean frame.',
-    alt: 'Parking and electric vehicle charging at Hatsey Kaleb Hotel.'
+    alt: 'Parking and electric vehicle charging at Triple E Hotel & Spa.'
   },
   'concierge': {
     path: '/assets/images/staff/concierge.webp',
@@ -151,7 +151,7 @@ export const photographyManifest = {
     minimumResolution: '1600 x 2000',
     subject: 'Concierge welcome and local knowledge',
     composition: 'Portrait with eye contact, warm natural light, and a subtle lobby or map context.',
-    alt: 'Hatsey Kaleb Hotel concierge welcoming guests.'
+    alt: 'Triple E Hotel & Spa concierge welcoming guests.'
   },
   'staff-front-desk': {
     path: '/assets/images/staff/front-desk.webp',
@@ -160,7 +160,7 @@ export const photographyManifest = {
     minimumResolution: '1600 x 2000',
     subject: 'Front desk team portrait',
     composition: 'Photograph with consent, name and role recorded, and enough surrounding detail to connect person and place.',
-    alt: 'Front desk team member at Hatsey Kaleb Hotel.'
+    alt: 'Front desk team member at Triple E Hotel & Spa.'
   },
   'guest-experience': {
     path: '/assets/images/experiences/guest-arrival.webp',
@@ -169,7 +169,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1600',
     subject: 'Guest arrival and hospitality moment',
     composition: 'Capture welcome, luggage assistance, or shared conversation with written guest consent.',
-    alt: 'Guest arrival experience at Hatsey Kaleb Hotel.'
+    alt: 'Guest arrival experience at Triple E Hotel & Spa.'
   },
   'gheralta-mountains': {
     path: '/assets/images/attractions/gheralta-mountains.webp',
@@ -187,7 +187,7 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1600',
     subject: 'Historical churches and heritage sites',
     composition: 'Show architectural detail respectfully, record site permissions, and avoid depicting restricted interiors.',
-    alt: 'Historical heritage site near Hatsey Kaleb Hotel.'
+    alt: 'Historical heritage site near Triple E Hotel & Spa.'
   },
   'drone-aerial': {
     path: '/assets/images/attractions/drone-aerial.webp',
@@ -196,7 +196,7 @@ export const photographyManifest = {
     minimumResolution: '3840 x 2160',
     subject: 'Aerial view of hotel and surrounding landscape',
     composition: 'Establish geographic context with a stable horizon, documented flight permissions, and no identifiable private activity.',
-    alt: 'Aerial view of Hatsey Kaleb Hotel and the surrounding Tigrayan landscape.'
+    alt: 'Aerial view of Triple E Hotel & Spa and the surrounding Tigrayan landscape.'
   },
   'sunset-night': {
     path: '/assets/images/hotel/sunset-night.webp',
@@ -205,7 +205,7 @@ export const photographyManifest = {
     minimumResolution: '3000 x 1688',
     subject: 'Hotel at sunset and after dark',
     composition: 'Create a paired golden-hour and blue-hour set from the same considered viewpoint.',
-    alt: 'Hatsey Kaleb Hotel glowing at sunset.'
+    alt: 'Triple E Hotel & Spa glowing at sunset.'
   },
   'gallery-editorial': {
     path: '/assets/images/hotel/gallery-editorial.webp',
@@ -214,6 +214,6 @@ export const photographyManifest = {
     minimumResolution: '2400 x 1600',
     subject: 'Editorial hotel gallery image',
     composition: 'Build a varied visual sequence with a clear subject, generous negative space, and a consistent warm documentary treatment.',
-    alt: 'Editorial view of Hatsey Kaleb Hotel.'
+    alt: 'Editorial view of Triple E Hotel & Spa.'
   }
 };

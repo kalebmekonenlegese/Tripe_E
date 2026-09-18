@@ -175,7 +175,7 @@ window.HotelAppConfig = {
 
   // Hotel
   hotel: {
-    name: 'Hatsey Kaleb Hotel',
+    name: 'Triple E Hotel & Spa',
     phone: '+251 914 754 143',
     email: 'info@hatseykalebhotel.com',
     address: 'Abiy Adi, Tigray Region, Ethiopia',

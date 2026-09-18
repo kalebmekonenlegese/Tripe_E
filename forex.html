@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchange Rates | Triple E Hotel & Spa</title>
+  <meta name="description" content="View indicative Ethiopian Birr exchange rates for common guest currencies and ask the Triple E Hotel & Spa front desk about currency exchange. ">
+  <link rel="canonical" href="https://hatseykalebhotel.com/forex.html">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="forex-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="logo"><img loading="lazy" decoding="async" width="56" height="56" src="/assets/images/logo-01.jpg" alt="Triple E Hotel & Spa logo"><span class="logo-title">Triple E Hotel & Spa</span></div>
+      <nav id="primary-navigation" class="nav" aria-label="Primary navigation">
+        <a href="index.html">home</a><a href="rooms.html">rooms</a><a href="restaurant.html">dining</a><a href="events.html">events</a><a href="gallery.html">gallery</a><a href="about.html">about us</a><a href="contact.html">contact us</a><a href="services.html">services</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle main navigation"><span class="hamburger" aria-hidden="true"></span><span>menu</span></button>
+      <div class="language-menu"><button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-list" aria-label="Language selector">lang <span class="icon" aria-hidden="true">⌵</span></button><div id="language-list" class="language-list" role="menu" aria-label="Language selection"><a href="?lang=en" data-lang="en" role="menuitem">English</a><a href="?lang=am" data-lang="am" role="menuitem">አማርኛ</a><a href="?lang=ti" data-lang="ti" role="menuitem">ትግርኛ</a></div></div>
+      <div class="top-actions" aria-label="Booking actions"><a href="booking.html">book now</a><a href="account.html">my bookings</a></div>
+    </div>
+  </header>
+  <div id="scroll-indicator" aria-hidden="true"></div>
+  <main id="main-content" class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="services.html">Services</a><span>/</span><span>Currency Exchange</span></nav>
+    <section class="hero forex-hero" aria-labelledby="forex-title">
+      <img src="/assets/images/forex.jpg" alt="Currency exchange support for international hotel guests" width="1600" height="900" loading="eager" fetchpriority="high">
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-copy"><p class="eyebrow">Practical support for international guests</p><h1 id="forex-title" class="title">Currency Exchange</h1><p class="subtitle">Check current indicative Ethiopian Birr rates before you arrive, then speak with our front desk for availability and the final rate for your transaction.</p><div class="hero-actions"><a class="buttoncall" href="contact.html">Ask the front desk</a><a class="button-outline" href="#rates">View indicative rates</a></div></div>
+    </section>
+    <section id="rates" class="page-shell forex-section" aria-labelledby="rates-heading">
+      <div class="page-intro"><p class="eyebrow">Updated periodically</p><h2 id="rates-heading">Indicative exchange rates</h2><p id="forex-updated" class="form-note" role="status" aria-live="polite">Loading the latest available rates...</p></div>
+      <div id="forex-status" class="forex-status" role="status" aria-live="polite">Fetching rates...</div>
+      <div id="forex-rate-grid" class="forex-rate-grid" aria-live="polite"></div>
+      <p class="forex-disclaimer"><strong>Guest exchange notice:</strong> These rates are indicative only. Final exchange rates, supported currencies, limits, and availability are confirmed at the front desk or reception before any transaction.</p>
+    </section>
+    <section class="final-cta-card"><div><h2>Need to exchange currency?</h2><p>Contact our team before arrival or ask reception during your stay about the currencies currently available.</p></div><div class="final-cta-actions"><a class="buttoncall" href="contact.html">Contact the hotel</a><a class="button-outline" href="booking.html">Book a stay</a></div></section>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><div class="footer-logo"><img src="/assets/images/logo-01.jpg" width="48" height="48" alt="Triple E Hotel & Spa logo" loading="lazy"><div><strong>Triple E Hotel & Spa</strong><p>Warm hospitality in Tigray — comfort, events, and dining.</p></div></div></div><div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="rooms.html">Rooms</a></li><li><a href="booking.html">Book Now</a></li><li><a href="contact.html">Contact</a></li></ul></div><div class="footer-links"><h3>Explore</h3><ul><li><a href="services.html">Hotel Services</a></li><li><a href="forex.html">Currency Exchange</a></li><li><a href="transportation.html">Transportation</a></li><li><a href="spa-wellness.html">Spa &amp; Wellness</a></li></ul></div></div><div class="footer-bottom"><div>© 2025 Triple E Hotel & Spa. All rights reserved.</div><div><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></div></div></footer>
+  <script type="module" src="src/main.js"></script>
+  <script type="module">
+    const currencyNames = { USD: 'US Dollar', EUR: 'Euro', GBP: 'British Pound', AED: 'UAE Dirham', SAR: 'Saudi Riyal' };
+    const formatRate = (value) => Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+    const updated = document.getElementById('forex-updated');
+    const status = document.getElementById('forex-status');
+    const grid = document.getElementById('forex-rate-grid');
+    const renderRates = (data) => {
+      const date = new Date(data.updatedAt);
+      updated.textContent = `Rates as of ${date.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}${data.stale ? ' (last successfully updated)' : ''}`;
+      status.textContent = data.stale ? 'Live refresh unavailable. Showing the last successfully cached rates.' : 'Live indicative rates loaded.';
+      status.className = data.stale ? 'forex-status is-stale' : 'forex-status is-ready';
+      grid.innerHTML = Object.entries(data.rates).map(([currency, rate]) => `<article class="forex-rate-card"><span class="forex-currency">${currency}</span><h3>${currencyNames[currency] || currency}</h3><strong>${formatRate(rate)} ETB</strong><p>1 ${currency} ≈ ${formatRate(rate)} ETB</p></article>`).join('');
+    };
+    fetch('/api/forex/rates', { credentials: 'same-origin' }).then(async (response) => { const data = await response.json(); if (!response.ok || !data.success) throw new Error(data.error || 'Rates unavailable'); return data; }).then(renderRates).catch((error) => { status.textContent = error.message || 'Rates are temporarily unavailable. Please ask at the front desk.'; status.className = 'forex-status is-error'; updated.textContent = 'Rates could not be refreshed'; grid.innerHTML = '<article class="forex-fallback"><strong>Please ask at reception for current exchange information.</strong><p>Our front desk can confirm supported currencies, availability, and the final transaction rate.</p></article>'; });
+  </script>
+</body>
+</html>

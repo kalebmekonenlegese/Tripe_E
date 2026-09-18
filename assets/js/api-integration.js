@@ -1,5 +1,5 @@
 /**
- * Hatsey Kaleb Hotel - API Integration Module
+ * Triple E Hotel & Spa - API Integration Module
  * Connects all frontend forms to backend API endpoints
  *
  * Phase 14: Backend API Integration

@@ -1,5 +1,5 @@
-﻿/**
- * Hatsey Kaleb Hotel - Frontend API Client
+/**
+ * Triple E Hotel & Spa - Frontend API Client
  *
  * Unified API client for all backend communications
  * Handles: Auth, Bookings, Payments, Contact, Reviews, Newsletter, Analytics

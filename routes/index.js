@@ -8,6 +8,7 @@ const analyticsRoutes = require('./analyticsRoutes');
 const reviewRoutes = require('./reviewRoutes');
 const newsletterRoutes = require('./newsletterRoutes');
 const conciergeRoutes = require('./conciergeRoutes');
+const forexRoutes = require('./forexRoutes');
 
 const router = express.Router();
 
@@ -20,5 +21,6 @@ router.use('/analytics', analyticsRoutes);
 router.use('/reviews', reviewRoutes);
 router.use('/newsletter', newsletterRoutes);
 router.use('/concierge', conciergeRoutes);
+router.use('/forex', forexRoutes);
 
 module.exports = router;

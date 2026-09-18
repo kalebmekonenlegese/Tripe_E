@@ -3,6 +3,28 @@ import { photographyManifest } from '../config/photography-manifest.js';
 
 // ========== SHARED UTILITIES ==========
 
+const HOTEL_BRAND = 'Triple E Hotel & Spa';
+
+function applyHotelBranding() {
+  const replaceBrand = (value) => value.replace(/Hatsey Kaleb Hotel|HATSEY KALEB HOTEL/g, HOTEL_BRAND);
+  const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (textWalker.nextNode()) textNodes.push(textWalker.currentNode);
+  textNodes.forEach((node) => {
+    node.nodeValue = replaceBrand(node.nodeValue);
+  });
+  document.title = replaceBrand(document.title);
+  document.querySelectorAll('img[alt], [aria-label], [placeholder], meta[content]').forEach((element) => {
+    ['alt', 'aria-label', 'placeholder', 'content'].forEach((attribute) => {
+      if (element.hasAttribute(attribute)) {
+        element.setAttribute(attribute, replaceBrand(element.getAttribute(attribute)));
+      }
+    });
+  });
+}
+
+applyHotelBranding();
+
 function setInert(el, state) {
   if (!el) return;
   try {
@@ -63,6 +85,8 @@ function initializeHeroVideo() {
   };
 
   video.addEventListener('error', showFallback, { once: true });
+  video.addEventListener('stalled', showFallback, { once: true });
+  video.addEventListener('emptied', showFallback, { once: true });
   if (prefersReducedMotion) {
     video.pause();
     video.removeAttribute('autoplay');
@@ -271,11 +295,11 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     <button id="concierge-toggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="concierge-dialog" aria-label="Open AI Concierge">chat</button>
     <div id="concierge-dialog" role="dialog" aria-modal="false" aria-label="Hotel Concierge Assistant" hidden>
       <div class="concierge-header" role="region" aria-label="Concierge header">
-        <div class="concierge-title"><strong>Hatsey Concierge</strong><small>How can I help?</small></div>
+        <div class="concierge-title"><strong>Triple E Concierge</strong><small>How can I help?</small></div>
         <div class="concierge-controls"><select id="concierge-lang" aria-label="Choose language"><option value="en">English</option><option value="am">Amharic</option><option value="ti">Tigrinya</option></select><button id="concierge-close" class="concierge-close" type="button" aria-label="Close concierge">×</button></div>
       </div>
-      <div class="concierge-body"><div id="concierge-messages" class="concierge-messages" role="log" aria-live="polite"></div><p id="concierge-status" class="concierge-status" role="status" aria-live="polite"></p><form id="concierge-form" class="concierge-form"><textarea id="concierge-input" rows="1" placeholder="Ask about rooms, dining, or your stay..." aria-label="Ask Hatsey Concierge"></textarea><button id="concierge-send" type="submit">Send</button></form></div>
-      <div class="concierge-footer"><small>Hatsey Kaleb Hotel concierge</small></div>
+      <div class="concierge-body"><div id="concierge-messages" class="concierge-messages" role="log" aria-live="polite"></div><p id="concierge-status" class="concierge-status" role="status" aria-live="polite"></p><form id="concierge-form" class="concierge-form"><textarea id="concierge-input" rows="1" placeholder="Ask about rooms, dining, or your stay..." aria-label="Ask Triple E Concierge"></textarea><button id="concierge-send" type="submit">Send</button></form></div>
+      <div class="concierge-footer"><small>Triple E Hotel &amp; Spa concierge</small></div>
     </div>`;
   document.body.appendChild(widget);
 
@@ -308,7 +332,7 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     dialog.hidden = false;
     dialog.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
-    if (!messages.children.length) appendMessage('Welcome to Hatsey Kaleb Hotel. I can help with verified rooms, dining, services, local experiences, and availability questions.');
+    if (!messages.children.length) appendMessage('Welcome to Triple E Hotel & Spa. I can help with verified rooms, dining, services, local experiences, and availability questions.');
     input.focus();
   };
 
@@ -384,6 +408,8 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   const scrollIndicator = document.getElementById('scroll-indicator');
   
   const sections = Array.from(document.querySelectorAll('main section[id]'));
+  let sectionOffsets = [];
+  let activeSectionId = null;
 
   const supportedLanguages = ['en', 'am', 'ti'];
   const defaultLanguage = 'en';
@@ -393,11 +419,11 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
       navGallery: 'gallery',
       navAbout: 'about us',
       navContact: 'contact us',
-      heroTitle: 'hatsey kaleb hotel',
+      heroTitle: 'triple e hotel & spa',
       heroSubtitle: 'Where every guest is treated like family. Enjoy comfortable rooms, modern event facilities, and warm Ethiopian hospitality in Tigray.',
       heroAction: 'book now!',
       storyHeading: 'Our Journey',
-      storyIntro: 'Hatsey Kaleb Hotel is a family-owned establishment founded to create a welcoming space for travelers seeking comfort, culture, and outstanding hospitality in Tigray.',
+      storyIntro: 'Triple E Hotel & Spa is a family-owned establishment founded to create a welcoming space for travelers seeking comfort, culture, and outstanding hospitality in Tigray.',
       contactHeading: 'Contact',
       contactIntro: 'Reach out to us for bookings, questions, or event planning support.',
       liveChat: 'live chat'
@@ -433,6 +459,10 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   };
 
   // Navigation helpers
+  function updateSectionOffsets() {
+    sectionOffsets = sections.map((section) => ({ id: section.id, top: section.offsetTop }));
+  }
+
   function updateActiveLink() {
     const normalizePath = (pathname) => {
       const normalized = pathname.replace(/\/$/, '');
@@ -442,11 +472,14 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     const scrollPosition = window.scrollY + 140;
     let activeId = sections[0] ? sections[0].id : '';
 
-    sections.forEach(section => {
-      if (scrollPosition >= section.offsetTop) {
+    sectionOffsets.forEach(section => {
+      if (scrollPosition >= section.top) {
         activeId = section.id;
       }
     });
+
+    if (activeId === activeSectionId) return;
+    activeSectionId = activeId;
 
     navLinks.forEach(link => {
       const href = link.getAttribute('href') || '';
@@ -561,14 +594,23 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     setLanguage(language);
   }
 
-  // Scroll progress indicator
-  let rafId = null;
+  // Scroll-linked UI is coalesced into one frame to avoid duplicate layout work.
+  let scrollRafId = null;
   function updateScrollIndicator() {
     if (!scrollIndicator) return;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
     scrollIndicator.style.width = pct + '%';
-    rafId = null;
+  }
+
+  function handleScroll() {
+    if (scrollRafId !== null) return;
+    scrollRafId = requestAnimationFrame(() => {
+      scrollRafId = null;
+      updateScrollIndicator();
+      updateActiveLink();
+      updateStickyShadow();
+    });
   }
 
   // Event listeners
@@ -591,12 +633,10 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     });
   }
 
-  window.addEventListener('scroll', () => {
-    if (rafId) return;
-    rafId = requestAnimationFrame(updateScrollIndicator);
-    updateActiveLink();
-    updateStickyShadow();
-  }, { passive: true });
+  updateSectionOffsets();
+  updateActiveLink();
+  window.addEventListener('resize', updateSectionOffsets, { passive: true });
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   document.addEventListener('click', (event) => {
     if (!languageMenu || !languageToggle) return;
@@ -693,24 +733,63 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   dialog.className = 'auth-dialog';
   dialog.innerHTML = `
     <form method="dialog" class="auth-dialog-form" novalidate>
-      <button type="submit" class="auth-dialog-close" aria-label="Close authentication dialog">×</button>
-      <p class="eyebrow">Guest access</p>
-      <h2 class="auth-dialog-title">Sign in</h2>
-      <div class="auth-dialog-fields auth-register-fields" hidden>
-        <label for="auth-first-name">First name</label>
-        <input id="auth-first-name" name="firstName" autocomplete="given-name" required>
-        <label for="auth-last-name">Last name</label>
-        <input id="auth-last-name" name="lastName" autocomplete="family-name" required>
-      </div>
-      <label for="auth-email">Email</label>
-      <input id="auth-email" name="email" type="email" autocomplete="email" required>
-      <label for="auth-password">Password</label>
-          <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}" title="Use at least 8 characters with an uppercase letter, a lowercase letter, and a number." required>
-      <label class="auth-confirm-field" for="auth-confirm-password" hidden>Confirm password</label>
-      <input id="auth-confirm-password" name="confirmPassword" type="password" autocomplete="new-password">
-      <p class="auth-dialog-error" role="alert" aria-live="assertive"></p>
-      <button type="button" class="buttoncall auth-submit">Sign in</button>
-      <button type="button" class="button-outline auth-switch">Create an account</button>
+      <section class="auth-dialog-visual" aria-label="Triple E Hotel guest experience">
+        <img src="/assets/images/hotel-exterior.jpg" alt="Triple E Hotel exterior at dusk" width="1200" height="1600">
+        <div class="auth-dialog-visual-content">
+          <span class="auth-dialog-badge">Premium guest experience</span>
+          <p class="auth-dialog-visual-kicker">Triple E Hotel</p>
+          <h2>Welcome to Triple E Hotel</h2>
+          <p>Experience luxury, comfort, and effortless booking with your personal guest account.</p>
+          <ul class="auth-dialog-benefits" aria-label="Guest account benefits">
+            <li>Secure booking</li>
+            <li>24/7 concierge</li>
+            <li>Exclusive member offers</li>
+          </ul>
+        </div>
+      </section>
+      <section class="auth-dialog-panel">
+        <button type="submit" class="auth-dialog-close" aria-label="Close authentication dialog">×</button>
+        <p class="auth-dialog-kicker">Guest access</p>
+        <h2 class="auth-dialog-title">Sign in</h2>
+        <p class="auth-dialog-subtitle">Sign in to manage your bookings, rewards, and upcoming stays.</p>
+        <div class="auth-dialog-fields auth-register-fields" hidden>
+          <div class="auth-field">
+            <label for="auth-first-name">First name</label>
+            <div class="auth-input-wrap"><span aria-hidden="true">+</span><input id="auth-first-name" name="firstName" autocomplete="given-name" required></div>
+          </div>
+          <div class="auth-field">
+            <label for="auth-last-name">Last name</label>
+            <div class="auth-input-wrap"><span aria-hidden="true">+</span><input id="auth-last-name" name="lastName" autocomplete="family-name" required></div>
+          </div>
+        </div>
+        <div class="auth-field">
+          <label for="auth-email">Email address</label>
+          <div class="auth-input-wrap"><span aria-hidden="true">@</span><input id="auth-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="auth-field">
+          <label for="auth-password">Password</label>
+          <div class="auth-input-wrap"><span aria-hidden="true">*</span><input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}" title="Use at least 8 characters with an uppercase letter, a lowercase letter, and a number." required><button type="button" class="auth-password-toggle" data-target="auth-password" aria-label="Show password">Show</button></div>
+        </div>
+        <div class="auth-password-strength" hidden aria-live="polite">
+          <div class="auth-strength-meter"><span></span></div>
+          <p>Password strength: <strong>Not started</strong></p>
+          <ul class="auth-password-rules" aria-label="Password requirements">
+            <li data-rule="length">Minimum 8 characters</li>
+            <li data-rule="uppercase">One uppercase letter</li>
+            <li data-rule="number">One number</li>
+            <li data-rule="special">One special character</li>
+          </ul>
+        </div>
+        <div class="auth-field auth-confirm-field" hidden>
+          <label for="auth-confirm-password">Confirm password</label>
+          <div class="auth-input-wrap"><span aria-hidden="true">*</span><input id="auth-confirm-password" name="confirmPassword" type="password" autocomplete="new-password"><button type="button" class="auth-password-toggle" data-target="auth-confirm-password" aria-label="Show password">Show</button></div>
+        </div>
+        <div class="auth-dialog-options"><label class="auth-remember"><input type="checkbox" name="rememberMe"> <span>Remember me</span></label><a href="contact.html">Need help signing in?</a></div>
+        <div class="auth-dialog-divider"><span>or</span></div>
+        <p class="auth-dialog-error" role="alert" aria-live="assertive"></p>
+        <button type="button" class="buttoncall auth-submit">Sign in</button>
+        <button type="button" class="button-outline auth-switch">Create an account</button>
+      </section>
     </form>`;
   document.body.appendChild(dialog);
 
@@ -725,12 +804,18 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   const error = dialog.querySelector('.auth-dialog-error');
   const submit = dialog.querySelector('.auth-submit');
   const switchMode = dialog.querySelector('.auth-switch');
+  const subtitle = dialog.querySelector('.auth-dialog-subtitle');
+  const strength = dialog.querySelector('.auth-password-strength');
+  const passwordToggles = dialog.querySelectorAll('.auth-password-toggle');
   let registerMode = false;
 
   const renderMode = () => {
     if (title) title.textContent = registerMode ? 'Create your account' : 'Sign in';
     if (submit) submit.textContent = registerMode ? 'Create account' : 'Sign in';
-    if (switchMode) switchMode.textContent = registerMode ? 'Already have an account?' : 'Create an account';
+    if (switchMode) switchMode.textContent = registerMode ? 'Already have an account? Sign in' : 'Don\'t have an account? Create account';
+    if (subtitle) subtitle.textContent = registerMode
+      ? 'Join Triple E Hotel for seamless reservations, exclusive offers, and faster check-ins.'
+      : 'Sign in to manage your bookings, rewards, and upcoming stays.';
     if (registerFields) registerFields.hidden = !registerMode;
     if (confirmField) confirmField.hidden = !registerMode;
     if (registerFields) {
@@ -741,6 +826,7 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     if (confirmPassword) {
       confirmPassword.required = registerMode;
     }
+    if (strength) strength.hidden = !registerMode;
     if (password) {
       password.autocomplete = registerMode ? 'new-password' : 'current-password';
     }
@@ -758,6 +844,8 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   actions.querySelector('[aria-label="Sign up"]')?.addEventListener('click', () => open(true));
   actions.querySelector('[aria-label="Sign in"]')?.addEventListener('click', () => open(false));
   document.querySelector('#account-sign-in')?.addEventListener('click', () => open(false));
+  document.querySelector('#account-sign-up')?.addEventListener('click', () => open(true));
+  document.querySelector('#account-sign-in-secondary')?.addEventListener('click', () => open(false));
   const signOut = document.createElement('button');
   signOut.type = 'button';
   signOut.className = 'auth-sign-out';
@@ -781,6 +869,33 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
   switchMode.addEventListener('click', () => {
     registerMode = !registerMode;
     renderMode();
+  });
+  passwordToggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const target = form.querySelector(`#${toggle.dataset.target}`);
+      if (!target) return;
+      const visible = target.type === 'text';
+      target.type = visible ? 'password' : 'text';
+      toggle.textContent = visible ? 'Show' : 'Hide';
+      toggle.setAttribute('aria-label', `${visible ? 'Show' : 'Hide'} password`);
+    });
+  });
+  password?.addEventListener('input', () => {
+    if (!strength) return;
+    const value = password.value;
+    const rules = {
+      length: value.length >= 8,
+      uppercase: /[A-Z]/.test(value),
+      number: /\d/.test(value),
+      special: /[^A-Za-z0-9]/.test(value)
+    };
+    const passed = Object.values(rules).filter(Boolean).length;
+    strength.querySelector('.auth-strength-meter span')?.style.setProperty('width', `${passed * 25}%`);
+    const label = strength.querySelector('strong');
+    if (label) label.textContent = passed === 4 ? 'Strong' : passed >= 2 ? 'Getting stronger' : 'Needs attention';
+    Object.entries(rules).forEach(([rule, valid]) => {
+      strength.querySelector(`[data-rule="${rule}"]`)?.classList.toggle('is-valid', valid);
+    });
   });
   submit.addEventListener('click', async () => {
     if (error) error.textContent = '';
@@ -1674,8 +1789,8 @@ footerUI();
 
 // ========== HOTEL AVAILABILITY FORM ==========
 (function initializeHotelAvailabilityForm() {
-  const form = document.getElementById('booking-form');
-  if (!form || document.getElementById('hotel-booking-form')) return;
+  const form = document.getElementById('homepage-booking-form');
+  if (!form) return;
 
   const result = document.getElementById('availability-result');
   const roomTypeMap = {
@@ -1687,8 +1802,8 @@ footerUI();
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const checkIn = form.elements.checkin?.value;
-    const checkOut = form.elements.checkout?.value;
+    const checkIn = form.elements.checkIn?.value;
+    const checkOut = form.elements.checkOut?.value;
     const roomType = roomTypeMap[form.elements.roomType?.value];
     const guests = Number(form.elements.adults?.value || 0) + Number(form.elements.children?.value || 0);
 
@@ -1719,6 +1834,85 @@ footerUI();
   });
 })();
 
+// ========== SPA RESERVATION ============
+(function initializeSpaReservation() {
+  const form = document.getElementById('spa-reservation-form');
+  if (!form) return;
+
+  const error = document.getElementById('spa-reservation-error');
+  const confirmation = document.getElementById('spa-confirmation');
+  const treatment = document.getElementById('spa-treatment');
+  const therapist = document.getElementById('spa-therapist');
+  const duration = document.getElementById('spa-duration');
+  const summaryTreatment = document.getElementById('spa-summary-treatment');
+  const summaryTherapist = document.getElementById('spa-summary-therapist');
+  const summaryDuration = document.getElementById('spa-summary-duration');
+  const summaryPrice = document.getElementById('spa-summary-price');
+
+  const prices = {
+    'Swedish Massage': 75,
+    'Deep Tissue Massage': 90,
+    'Facial Treatment': 70,
+    'Steam Therapy': 55,
+    'Wellness Package': 125
+  };
+
+  function updateSummary() {
+    const selectedTreatment = treatment?.value || 'Swedish Massage';
+    const selectedDuration = duration?.value || '60 minutes';
+    const durationMinutes = Number.parseInt(selectedDuration, 10) || 60;
+    const basePrice = prices[selectedTreatment] || 75;
+    const price = Math.round(basePrice * (durationMinutes / 60));
+    if (summaryTreatment) summaryTreatment.textContent = selectedTreatment;
+    if (summaryTherapist) summaryTherapist.textContent = therapist?.value || 'No preference';
+    if (summaryDuration) summaryDuration.textContent = selectedDuration;
+    if (summaryPrice) summaryPrice.textContent = `$${price}`;
+  }
+
+  form.addEventListener('input', updateSummary);
+  form.addEventListener('change', updateSummary);
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (error) error.textContent = '';
+    if (confirmation) confirmation.hidden = true;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const result = await window.hotelAPI.submitContact({
+        firstName: document.getElementById('spa-name').value.trim(),
+        lastName: 'Spa Guest',
+        email: 'spa-reservations@hatseykalebhotel.com',
+        phone: '+251 914 754 143',
+        subject: 'Spa treatment reservation inquiry',
+        message: [
+          `Treatment: ${treatment.value}`,
+          `Therapist: ${therapist.value}`,
+          `Date: ${document.getElementById('spa-date').value}`,
+          `Time: ${document.getElementById('spa-time').value}`,
+          `Duration: ${duration.value}`
+        ].join('\n')
+      });
+      if (confirmation) {
+        confirmation.hidden = false;
+        confirmation.querySelector('p').textContent = result.message || 'Your treatment request has been received. Our wellness team will confirm availability shortly.';
+      }
+    } catch (requestError) {
+      if (error) error.textContent = requestError.error || 'Unable to reserve the treatment right now. Please try again.';
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+
+  updateSummary();
+})();
+
 // ========== ROOM AVAILABILITY + WISHLIST ==========
 (function initializeRoomAvailability() {
   const roomCards = Array.from(document.querySelectorAll('.room-card'));
@@ -1729,6 +1923,7 @@ footerUI();
   const priceFilter = document.getElementById('room-price-filter');
   const availabilityFilter = document.getElementById('room-availability-filter');
   const sortSelect = document.getElementById('room-sort');
+  const roomGrid = document.getElementById('room-types');
   const favoriteSummary = document.getElementById('favorite-summary');
   const favoritesList = document.getElementById('favorite-room-list');
   const compareHeaders = [document.getElementById('compare-room-1'), document.getElementById('compare-room-2'), document.getElementById('compare-room-3')];
@@ -1798,6 +1993,9 @@ footerUI();
       const shouldShow = sorted.includes(card);
       card.style.display = shouldShow ? '' : 'none';
     });
+    if (roomGrid) {
+      [...sorted, ...roomCards.filter((card) => !sorted.includes(card))].forEach((card) => roomGrid.appendChild(card));
+    }
     updateComparisonUI();
   }
 

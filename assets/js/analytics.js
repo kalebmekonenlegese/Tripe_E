@@ -131,6 +131,15 @@
     }
   }
 
+  let scrollRafId = null;
+  function scheduleScrollDepth() {
+    if (scrollRafId !== null) return;
+    scrollRafId = requestAnimationFrame(() => {
+      scrollRafId = null;
+      trackScrollDepth();
+    });
+  }
+
   function init(analyticsConfig) {
     const config = analyticsConfig || window.HotelAppConfig?.analytics || {};
 
@@ -204,7 +213,7 @@
 
     if (config.heatmapEnabled) {
       document.addEventListener('click', trackClick, { passive: true });
-      window.addEventListener('scroll', trackScrollDepth, { passive: true });
+      window.addEventListener('scroll', scheduleScrollDepth, { passive: true });
     }
 
     trackPageview();
@@ -252,8 +261,6 @@
       })(window, document, 'clarity', 'script', 'clarity', config.clarityProjectId);
     }
 
-    document.addEventListener('click', trackClick, { passive: true });
-    window.addEventListener('scroll', trackScrollDepth, { passive: true });
     trackPageview();
     trackScrollDepth();
   }
