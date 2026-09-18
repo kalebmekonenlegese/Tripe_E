@@ -12,15 +12,40 @@ const findBookingForPayment = ({ bookingId, userId, guestEmail }) => prisma.book
 });
 
 const getDepositAmount = (booking) => {
-  const nightlyRate = Number(booking.pricePerNight);
-  const rooms = Number(booking.rooms) || 1;
-  if (nightlyRate > 0) return nightlyRate * rooms;
-  return Number(booking.totalPrice) / (Number(booking.nights) || 1);
+  const total = Number(booking.totalPrice || 0);
+
+  if (total > 0) return total;
+
+  const nightlyRate = Number(booking.pricePerNight || 0);
+  const rooms = Number(booking.rooms || 1);
+  const nights = Number(booking.nights || 1);
+
+  return nightlyRate * rooms * nights;
 };
 
 const normalizeCurrency = (value) => {
   const normalized = String(value || 'ETB').trim().toUpperCase();
   return normalized === 'USD' ? 'USD' : 'ETB';
+};
+
+const formatPhoneNumber = (phone) => {
+  if (!phone) return '+251911111111';
+
+  const cleaned = String(phone).replace(/\s+/g, '');
+
+  if (/^09\d{8}$/.test(cleaned)) {
+    return '+251' + cleaned.substring(1);
+  }
+
+  if (/^2519\d{8}$/.test(cleaned)) {
+    return '+' + cleaned;
+  }
+
+  if (/^\+2519\d{8}$/.test(cleaned)) {
+    return cleaned;
+  }
+
+  return '+251911111111';
 };
 
 const shouldUseLegacyPaymentFlow = () => typeof globalThis.fetch !== 'function' || (!process.env.CHAPA_SECRET_KEY && !chapaSecretKey);
@@ -44,8 +69,32 @@ const initializeChapaPayment = async ({ bookingId, userId, guestEmail, ...rest }
   }
 
   const amount = Number(booking.totalPrice || getDepositAmount(booking) || 0);
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    throw new Error(`Invalid payment amount: ${amount}`);
+  }
+
   const txRef = `hotel-${booking.id}-${Date.now()}`;
   const currency = normalizeCurrency(booking.currency || 'ETB');
+  const requestBody = {
+    amount: amount.toFixed(2),
+    currency,
+    email: booking.email || guestEmail || 'guest@example.com',
+    first_name: booking.firstName || 'Guest',
+    last_name: booking.lastName || 'User',
+    phone_number: formatPhoneNumber(booking.phone),
+    tx_ref: txRef,
+    callback_url: CHAPA_CALLBACK_URL,
+    return_url: CHAPA_RETURN_URL,
+    customization: {
+      title: 'Triple E Hotel & Spa',
+      description: `Payment for booking ${booking.id}`
+    }
+  };
+
+  console.log('========== CHAPA REQUEST ==========');
+  console.log(JSON.stringify(requestBody, null, 2));
+  console.log('===================================');
 
   const response = await fetch(`${CHAPA_API_BASE_URL}/transaction/initialize`, {
     method: 'POST',
@@ -53,27 +102,30 @@ const initializeChapaPayment = async ({ bookingId, userId, guestEmail, ...rest }
       Authorization: `Bearer ${CHAPA_SECRET_KEY}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      amount: amount.toFixed(2),
-      currency,
-      email: booking.email || guestEmail || 'guest@example.com',
-      first_name: booking.firstName || 'Guest',
-      last_name: booking.lastName || 'User',
-      phone_number: booking.phone || '+251900000000',
-      tx_ref: txRef,
-      callback_url: CHAPA_CALLBACK_URL,
-      return_url: CHAPA_RETURN_URL,
-      customization: {
-        title: 'Hatsey Kaleb Hotel',
-        description: `Payment for booking ${booking.id}`
-      }
-    })
+    body: JSON.stringify(requestBody)
   });
 
   const payload = await response.json();
 
-  if (!response.ok || payload?.status !== 'success' || !payload?.data?.checkout_url) {
-    const error = new Error(payload?.message || 'Chapa payment initialization failed');
+  console.log('========== CHAPA RESPONSE ==========');
+  console.log('Status:', response.status);
+  console.log(JSON.stringify(payload, null, 2));
+  console.log('====================================');
+
+  if (
+    !response.ok ||
+    payload?.status !== 'success' ||
+    !payload?.data?.checkout_url
+  ) {
+    console.error('========== CHAPA ERROR ==========');
+    console.error(JSON.stringify(payload, null, 2));
+    console.error('=================================');
+
+    const error = new Error(
+      payload?.message ||
+      payload?.error ||
+      JSON.stringify(payload)
+    );
     error.status = response.status || 502;
     throw error;
   }
@@ -91,6 +143,14 @@ const initializeChapaPayment = async ({ bookingId, userId, guestEmail, ...rest }
       chapaStatus: 'pending'
     }
   });
+
+  console.log('========== PAYMENT CREATED ==========');
+  console.log({
+    paymentId: payment.id,
+    bookingId: booking.id,
+    txRef
+  });
+  console.log('=====================================');
 
   return {
     bookingId: booking.id,
@@ -158,8 +218,22 @@ const verifyChapaPayment = async ({ tx_ref, bookingId, paymentIntentId, paymentM
   });
 
   const payload = await response.json();
+
+  console.log('========== VERIFY RESPONSE ==========');
+  console.log('Status:', response.status);
+  console.log(JSON.stringify(payload, null, 2));
+  console.log('=====================================');
+
   if (!response.ok || payload?.status !== 'success') {
-    const error = new Error(payload?.message || 'Chapa payment verification failed');
+    console.error('========== VERIFY ERROR ==========');
+    console.error(JSON.stringify(payload, null, 2));
+    console.error('==================================');
+
+    const error = new Error(
+      payload?.message ||
+      payload?.error ||
+      JSON.stringify(payload)
+    );
     error.status = response.status || 502;
     throw error;
   }
@@ -233,6 +307,9 @@ const handleChapaCallback = async (req, res) => {
     const redirect = `${process.env.FRONTEND_URL || frontendUrl || 'http://localhost:3000'}/booking/success?status=${encodeURIComponent(result.status)}&tx_ref=${encodeURIComponent(tx_ref)}`;
     return res.redirect(redirect);
   } catch (error) {
+    console.error('========== CALLBACK ERROR ==========');
+    console.error(error);
+    console.error(error.details || error.message);
     const redirect = `${process.env.FRONTEND_URL || frontendUrl || 'http://localhost:3000'}/booking/failure?tx_ref=${encodeURIComponent(tx_ref)}&error=${encodeURIComponent(error.message)}`;
     return res.redirect(redirect);
   }
