@@ -21,6 +21,9 @@ npm run server:dev
 npm run dev:full
 ```
 
+Local Vite development uses `http://localhost:3000` from `.env.development.local`.
+Keep production `VITE_API_URL` values in the deployment environment; do not put secrets in `VITE_*` variables because Vite exposes them to browser code.
+
 Open: **http://localhost:5173**
 
 ### Production Build

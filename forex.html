@@ -52,7 +52,27 @@
       status.className = data.stale ? 'forex-status is-stale' : 'forex-status is-ready';
       grid.innerHTML = Object.entries(data.rates).map(([currency, rate]) => `<article class="forex-rate-card"><span class="forex-currency">${currency}</span><h3>${currencyNames[currency] || currency}</h3><strong>${formatRate(rate)} ETB</strong><p>1 ${currency} ≈ ${formatRate(rate)} ETB</p></article>`).join('');
     };
-    fetch('/api/forex/rates', { credentials: 'same-origin' }).then(async (response) => { const data = await response.json(); if (!response.ok || !data.success) throw new Error(data.error || 'Rates unavailable'); return data; }).then(renderRates).catch((error) => { status.textContent = error.message || 'Rates are temporarily unavailable. Please ask at the front desk.'; status.className = 'forex-status is-error'; updated.textContent = 'Rates could not be refreshed'; grid.innerHTML = '<article class="forex-fallback"><strong>Please ask at reception for current exchange information.</strong><p>Our front desk can confirm supported currencies, availability, and the final transaction rate.</p></article>'; });
+    const apiBaseUrl = window.HotelAppConfig?.backendApiUrl || window.HotelAppConfig?.apiBaseUrl || window.location.origin;
+    const ratesUrl = `${apiBaseUrl.replace(/\/$/, '')}/api/forex/rates`;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 12000);
+    fetch(ratesUrl, { credentials: 'include', signal: controller.signal }).then(async (response) => {
+      const body = await response.text();
+      let data;
+      try {
+        data = JSON.parse(body);
+      } catch {
+        throw new Error(`Rates service returned an invalid response (${response.status})`);
+      }
+      if (!response.ok || !data.success) throw new Error(data.error || 'Rates unavailable');
+      return data;
+    }).then(renderRates).catch((error) => {
+      const message = error.name === 'AbortError' ? 'The live rates request timed out.' : error.message;
+      status.textContent = `${message} Please ask at the front desk for current rates.`;
+      status.className = 'forex-status is-error';
+      updated.textContent = 'Rates could not be refreshed';
+      grid.innerHTML = '<article class="forex-fallback"><strong>Please ask at reception for current exchange information.</strong><p>Our front desk can confirm supported currencies, availability, and the final transaction rate.</p></article>';
+    }).finally(() => window.clearTimeout(timeout));
   </script>
 </body>
 </html>

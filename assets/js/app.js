@@ -165,6 +165,40 @@ function initializeSuppliedPlaceholderMedia() {
   });
 }
 
+function initializeImageFallbacks() {
+  const pageFallbacks = {
+    '/index.html': '/assets/images/hotel-exterior.jpg',
+    '/rooms.html': '/assets/images/deluxe-room.webp',
+    '/standard-room.html': '/assets/images/suite.webp',
+    '/deluxe-room.html': '/assets/images/deluxe-room.webp',
+    '/executive-suite.html': '/assets/images/suite.webp',
+    '/family-room.html': '/assets/images/suite.webp',
+    '/restaurant.html': '/assets/images/restaurant.webp',
+    '/dining-experience.html': '/assets/images/restaurant.webp',
+    '/spa-wellness.html': '/assets/images/spa.webp',
+    '/events.html': '/assets/images/conference.avif',
+    '/conferences.html': '/assets/images/conference.avif',
+    '/weddings.html': '/assets/images/wedding.avif',
+    '/transportation.html': '/assets/images/airport-transfer.jpg',
+    '/facilities.html': '/assets/images/gym.webp',
+    '/gallery.html': '/assets/images/gallery-01.webp',
+    '/forex.html': '/assets/images/forex.jpg'
+  };
+  const fallbackAsset = pageFallbacks[window.location.pathname] || '/assets/images/hotel-exterior.jpg';
+
+  document.querySelectorAll('img').forEach((image) => {
+    const applyFallback = () => {
+      if (image.dataset.fallbackApplied || /logo|lordicon/i.test(image.src) || image.src.endsWith(fallbackAsset)) return;
+      image.dataset.fallbackApplied = 'true';
+      image.removeAttribute('srcset');
+      image.src = fallbackAsset;
+      image.classList.add('photo-ready');
+    };
+    image.addEventListener('error', applyFallback, { once: true });
+    if (image.complete && image.naturalWidth === 0) applyFallback();
+  });
+}
+
 function initializePhotographyPlanning() {
   const imageKeyBySource = [
     ['hotel-exterior', 'hotel-exterior'],
@@ -707,6 +741,7 @@ if (new URLSearchParams(window.location.search).get('photo-planning') === '1') {
     }
     createImageSkeletons();
     initializeSuppliedPlaceholderMedia();
+    initializeImageFallbacks();
     initializeSuppliedPictureSources();
     initializeHeroVideo();
     initializePhotographyPlanning();

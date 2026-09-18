@@ -6230,12 +6230,25 @@ details {
 
     @media (max-width: 900px) {
       .topbar-inner {
-        grid-template-columns: 1fr;
-        justify-items: stretch;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        padding: 10px 14px;
       }
+
+      .logo { min-width: 0; }
+
+      .logo-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .language-menu,
+      .top-actions { display: none; }
 
       .menu-toggle {
         display: inline-flex;
+        justify-self: end;
       }
 
       .nav {
