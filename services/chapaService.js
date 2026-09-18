@@ -87,8 +87,8 @@ const initializeChapaPayment = async ({ bookingId, userId, guestEmail, ...rest }
     callback_url: CHAPA_CALLBACK_URL,
     return_url: CHAPA_RETURN_URL,
     customization: {
-      title: 'Triple E Hotel & Spa',
-      description: `Payment for booking ${booking.id}`
+      title: 'Triple E Hotel',
+      description: `Booking ${booking.id}`
     }
   };
 
