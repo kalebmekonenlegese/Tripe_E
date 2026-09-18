@@ -121,12 +121,16 @@ const initializeChapaPayment = async ({ bookingId, userId, guestEmail, ...rest }
     console.error(JSON.stringify(payload, null, 2));
     console.error('=================================');
 
-    const error = new Error(
-      payload?.message ||
-      payload?.error ||
-      JSON.stringify(payload)
-    );
+    const errorMessage =
+      typeof payload?.message === 'string'
+        ? payload.message
+        : typeof payload?.error === 'string'
+          ? payload.error
+          : JSON.stringify(payload, null, 2);
+
+    const error = new Error(errorMessage);
     error.status = response.status || 502;
+    error.payload = payload;
     throw error;
   }
 
