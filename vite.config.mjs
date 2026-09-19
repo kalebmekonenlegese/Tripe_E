@@ -90,14 +90,22 @@ function copyStaticAssetsPlugin() {
       const sourceMediaDir = path.join(rootDir, 'assets', 'images');
       const targetMediaDir = path.join(distDir, 'assets', 'images');
 
+      // The site mixes absolute asset URLs between /images/... and /assets/images/...
+      // across HTML, CSS, and JS. Windows is case-insensitive, but Linux/Vercel is not,
+      // so the same content must be present under both output roots to avoid 404s in
+      // production deployments when an asset is referenced from either contract.
       if (fs.existsSync(sourceDir)) {
         fs.mkdirSync(targetDir, { recursive: true });
         fs.cpSync(sourceDir, targetDir, { recursive: true, force: true });
+        fs.mkdirSync(targetMediaDir, { recursive: true });
+        fs.cpSync(sourceDir, targetMediaDir, { recursive: true, force: true });
       }
 
       if (fs.existsSync(sourceMediaDir)) {
         fs.mkdirSync(targetMediaDir, { recursive: true });
         fs.cpSync(sourceMediaDir, targetMediaDir, { recursive: true, force: true });
+        fs.mkdirSync(targetDir, { recursive: true });
+        fs.cpSync(sourceMediaDir, targetDir, { recursive: true, force: true });
       }
     }
   };
